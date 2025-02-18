@@ -14,9 +14,13 @@ def correctdensity(d,T):##calculate what density a glass hydrometer would have i
     alpha = 25 * 10**-6   ##degC^-1
     return d*(1+alpha*(T-15.5555))
 def proof(d,T):
-    SG = correctdensity(d,T)/0.99904
-    proof = -736.034*SG + 795.45 ## From Linear Interpolation of Table 6: Slope = [Proof/SG]
+    SG = correctdensity(d,T)/0.99904##SG of water @ 60F
+    proof = -991.99*SG + 1014 ## From Linear Interpolation of Table 6: Slope = [Proof/SG]
     return proof
+
+def trueproof(P,T):
+    proofdown = np.floor(P)
+    tdown = np.floor(T)
     
 densities = np.array([0.921866667,
 0.8534,
