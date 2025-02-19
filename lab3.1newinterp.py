@@ -13,6 +13,8 @@ import scipy.stats
 import csv
 import scipy.signal
 import pint
+import pandas as pd
+
 
 u = pint.UnitRegistry()
 
@@ -24,10 +26,18 @@ def open_file(file_name):
 table6 = open_file('Table 6.csv')
 table6 = table6[:-3]
 table6 = np.array(table6, dtype=np.float64)
+table1 = open_file('Table 1.csv')
+table1 = table1[5:]
+table1 = pd.DataFrame(table1)
+table1.replace('', 0, inplace=True)
+
+
+
 
 def correctsg(d,T):##calculate what density a glass hydrometer would have indicated were the glass calibrated at 60◦F but used at T
     alpha = 25 * 10**-6   ##degC^-1
     return d*(1+alpha*(T-15.5555))/0.99904
+
 
 def interpolate6(d, T):
     target_value = correctsg(d, T)  # Single calculation for the target value
@@ -76,8 +86,9 @@ densities = np.array([0.921866667,
 0.874366667,
 0.904866667,
 0.978333333,
-0.786066667,
+
 ])
+
 densuncertanties = np.array([0.003607468,
 0.005066667,
 0.002031668,
@@ -98,11 +109,11 @@ temps = np.array([23.66666667,
 24.4,
 25.93333333,
 25.46666667,
-23.5,
 ])
 proofs = []
 for i in range(len(densities)):
     proofs.append(interpolate6(densities[i],temps[i]))
+proofs = np.array(proofs,dtype=float)
 tempuncertainties = np.array([0.117103375,
 0.117103375,
 0.202828995,
@@ -114,3 +125,23 @@ tempuncertainties = np.array([0.117103375,
 0.117103375,
 0.202828995,
 ])
+def trueproof(AP,T):
+    Tf = T*(9/5) + 32 ## Convert to Farenheit
+    Tl = int(np.floor(Tf) + 1)
+    Th = int(np.ceil(Tf) + 1)
+    APl = int(np.floor(AP) + 1)
+    APh = int(np.ceil(AP) + 1)
+    APlTl = float(table1.iloc[APl][Tl])
+    APlTh = float(table1.iloc[APl][Th])
+    APhTl = float(table1.iloc[APh][Tl])
+    APhTh = float(table1.iloc[APh][Th])
+    dfdc = (APhTl - APhTh) / (APh - APl)
+    dfdt = (APlTh - APlTl) / (Th - Tl)
+    trueproof = APlTl + (AP - APl)*dfdc + (Tf-Tl)*dfdt
+    
+    return trueproof
+    
+trueproofs = []
+for i in range(len(proofs)):
+    trueproofs.append(trueproof(proofs[i], temps[i]))
+
