@@ -84,14 +84,23 @@ for x1 in x_vals:
     y1_value = calcy(solved_T,x1,P)
     sol_y.append(y1_value)
 
-reflux = 5
-feed_frac_x = 0.102949 ##mol fr ethanol of feed stream
-product_frac_x = 0.59685
-waste_frac_y = 0.03558
-feed_dens = 0.978066
-prod_dens = 0.8161
-waste_dens = 0.9885666
-
+reflux = 4
+feed_frac_x = 0.121327 ##mol fr ethanol of feed stream
+product_frac_x = 0.573559
+waste_frac_y = 0.053286
+feed_dens = 0.974533
+prod_dens = 0.8275333
+waste_dens = 0.9859
+##Tray Fracs
+trayfracs = [0.18785,0.217849,0.47857,0.56593]
+trayfrac_sol = []
+trayfrac_ys = []
+for i in range(len(trayfracs)):
+    sol = so.root(vle, 70, args=(trayfracs[i], P))
+    solved_T = sol.x[0]
+    y = calcy(solved_T,trayfracs[i],P)
+    trayfrac_sol.append(solved_T)
+    trayfrac_ys.append(y)
 ##Mole wts
 water_molwt = 18.015
 ethanol_molwt = 46.068
@@ -122,16 +131,18 @@ plt.figure(0, figsize=(6, 4))
 ax = plt.gca()
 ax.set_ylim(0,1)
 plt.plot(x_vals, sol_y, label='Vapor Mole Fraction (y₁)')
-plt.plot(x_vals, x_vals, 'k--', label='y₁ = x₁ line')
+plt.plot(x_vals, x_vals, 'k-', label='y₁ = x₁ line')
+plt.plot(trayfracs,trayfrac_ys,'bo',label='Tray 2, 4, 6 and 8 ethanol mole fraction')
 plt.plot(product_frac_x*np.ones(len(ys)),ys,'k-.' )
 plt.plot(waste_frac_y, waste_frac_y , 'b.')
 plt.plot(feed_frac_x, feed_frac_x , 'b.')
 plt.plot(product_frac_x, product_frac_x , 'b.')
 plt.plot(waste_frac_y*np.ones(len(ys)),ys,'k--' )
-plt.plot(0.1029494*np.ones(len(ys)),ys,'k--' )
-plt.plot(x_vals[5:30], oly[5:30] , 'r-', label='operating line')
+plt.plot(feed_frac_x*np.ones(len(ys)),ys,'k--' )
+plt.plot(x_vals[6:29], oly[6:29] , 'r-', label='operating line')
 plt.plot(0, -10 , 'r-', label='operating line (stripping)')
 plt.plot(0, -10 , 'g-', label='q - line')
+plt.tight_layout()
 
 #plt.title('VLE x-y Diagram for EtOH-Water at P = 764.54 mmHg')
 plt.xlabel('Liquid Mole Fraction (x₁, Ethanol)')
