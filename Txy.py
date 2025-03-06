@@ -84,7 +84,47 @@ for x1 in x_vals:
     y1_value = calcy(solved_T,x1,P)
     sol_y.append(y1_value)
 
+reflux = 5
+feed_frac_x = 0.102949 ##density of feed stream
+product_frac_x = 0.59685
+waste_frac_y = 0.03558
 
+##Mole wts
+water_molwt = 18.015
+ethanol_molwt = 46.068
+feed_molwt = feed_frac_x * ethanol_molwt + (1-feed_frac_x)*water_molwt
+waste_molwt = waste_frac_y * ethanol_molwt + (1-waste_frac_y)*water_molwt
+prod_molwt = product_frac_x * ethanol_molwt + (1-product_frac_x)*water_molwt
+
+F = 58.1/(feed_molwt/0.9780666) ##ml/s
+#Molar Flow Rate = Volumetric Flow Rate / (Molar Mass / Density). 
+oly =[]
+olys = []
+D = F * (feed_frac_x - waste_frac_y)/(product_frac_x - waste_frac_y)
+B = F - D
+Vb = (1+reflux)*D
+
+for i in range(len(x_vals)-1):
+    oly.append(((reflux)/(reflux + 1))*x_vals[i] + product_frac_x/(reflux + 1))
+    olys.append(((Vb+1)/(Vb))*x_vals[i] + waste_frac_y*(1/Vb))
+olys.append(olys[-1])
+oly.append(oly[-1])
+
+        
+ys = np.linspace(0,1,10)
+
+plt.figure(0, figsize=(6, 4))
+ax = plt.gca()
+ax.set_ylim(-0.5,1)
+plt.plot(x_vals, sol_y, label='Vapor Mole Fraction (y₁)')
+plt.plot(x_vals, x_vals, 'k--', label='y₁ = x₁ line')
+plt.plot(product_frac_x*np.ones(len(ys)),ys,'k-.' )
+plt.plot(waste_frac_y*np.ones(len(ys)),ys,'k--' )
+plt.plot(0.1029494*np.ones(len(ys)),ys,'k--' )
+plt.plot(x_vals, oly , 'r-', label='operating line')
+plt.plot(x_vals, olys , 'r-', label='operating line (stripping)')
+
+plt.title('VLE x-y Diagram for EtOH-Water at P = 764.54 mmHg')
 plt.xlabel('Liquid Mole Fraction (x₁, Ethanol)')
 plt.ylabel('Vapor Mole Fraction (y₁, Ethanol)')
 plt.legend()

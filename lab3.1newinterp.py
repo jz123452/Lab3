@@ -115,10 +115,18 @@ def molefractions(CP):
     Avv = CP/2
     molefret = (Avv * 0.79313/46.06844)/(79.90*0.79313/46.06844 + (22.98*0.99904/18.01528))
     return molefret
-etden = 0.7894 #g/cm @ 20c
-waden = 0.9982
-densities = np.linspace(etden,waden,25)
-temps = 20*np.ones(len(densities))
+
+
+
+#EXPERIMENTAL DATA
+etden = np.mean([0.8164,0.8168,0.8151]) #g/cm @ 20c
+ettemp = np.mean([26.2,26.1,26.2])
+waden = np.mean([0.9879,0.9892,0.9886])
+watemp = np.mean([16.2,14.5,18.7])
+feden = np.mean([0.977,0.9786,0.9786])
+fetemp = np.mean([26.1,24.3,24.4])
+densities = [etden,waden,feden]
+temps = [ettemp,watemp,fetemp]
 #densities = np.array([0.921866667,
 #0.8534,
 #0.969866667,
