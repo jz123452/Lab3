@@ -120,12 +120,11 @@ def molefractions(CP):
     abvH = table6[CP_H][1]
     wbvL = table6[CP_L][2]
     wbvH = table6[CP_H][2]
-    
-    Wvv = wbvL + ((CP - CP_L)/(CP_H - CP_L + 1e-9))*(wbvH - wbvL)
+   
+    Wvv = wbvL + ((CP - CP_L)/(CP_H - CP_L))*(wbvH - wbvL)
     Avv = CP/2
-    molefret = (Avv * 0.79313/46.06844)/(79.90*0.79313/46.06844 + (22.98*0.99904/18.01528))
+    molefret = molefret = (Avv * 0.79313/46.06844) / ((Avv * 0.79313/46.06844) + (Wvv * 0.99904/18.01528))
     return molefret
-
 
 
 #EXPERIMENTAL DATA
@@ -176,7 +175,12 @@ traytemps = [np.mean([20.1,20.7,22.8]),np.mean([21.5,21.8,21.9]),np.mean([21.4,2
 #])
 
 trayproofs = []
-
+proofs = []
+for i in range(len(densities)):
+    
+    proofs.append(interpolate6(densities[i],temps[i]))
+##remove sorted for experimental data
+proofs = sorted(np.array(proofs,dtype=float), reverse=True)
 for i in range(len(traydens)):
     
     trayproofs.append(interpolate6(traydens[i],traytemps[i]))
@@ -195,16 +199,23 @@ trayproofs = sorted(np.array(trayproofs,dtype=float), reverse=True)
 #])
 
 traytrueproofs = []
-
+trueproofs = []
 for i in range(len(trayproofs)):
     
     traytrueproofs.append(trueproof(trayproofs[i], traytemps[i]))
+for i in range(len(proofs)):
+    
+    trueproofs.append(trueproof(proofs[i], temps[i]))
 
+molefrs = []
 traymolefrs = []
 
 for i in range(len(traytrueproofs)):
   
     traymolefrs.append(molefractions(traytrueproofs[i]))
+for i in range(len(trueproofs)):
+  
+    molefrs.append(molefractions(trueproofs[i]))
 plt.figure('1')
 
 

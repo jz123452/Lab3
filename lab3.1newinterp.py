@@ -120,37 +120,35 @@ def molefractions(CP):
     abvH = table6[CP_H][1]
     wbvL = table6[CP_L][2]
     wbvH = table6[CP_H][2]
-    
-    Wvv = wbvL + ((CP - CP_L)/(CP_H - CP_L + 1e-9))*(wbvH - wbvL)
+   
+    Wvv = wbvL + ((CP - CP_L)/(CP_H - CP_L+1e-12))*(wbvH - wbvL)
     Avv = CP/2
-    molefret = (Avv * 0.79313/46.06844)/(79.90*0.79313/46.06844 + (22.98*0.99904/18.01528))
+    molefret = molefret = (Avv * 0.79313/46.06844) / ((Avv * 0.79313/46.06844) + (Wvv * 0.99904/18.01528))
     return molefret
 
 
 
 #EXPERIMENTAL DATA
-#etden = np.mean([0.8164,0.8168,0.8151]) #g/cm @ 20c
-#ettemp = np.mean([26.2,26.1,26.2])
-#waden = np.mean([0.9879,0.9892,0.9886])
-#watemp = np.mean([16.2,14.5,18.7])
-#feden = np.mean([0.977,0.9786,0.9786])
-#fetemp = np.mean([26.1,24.3,24.4])
-densities60 = np.linspace(0.7932,0.99898,100) ## @ 60F
-densities = np.linspace(0.7894,0.99819,100) ## 20C
+etden = np.mean([0.8164,0.8168,0.8151]) #g/cm @ 20c
+ettemp = np.mean([26.2,26.1,26.2])
+waden = np.mean([0.9879,0.9892,0.9886])
+watemp = np.mean([16.2,14.5,18.7])
+feden = np.mean([0.977,0.9786,0.9786])
+fetemp = np.mean([26.1,24.3,24.4])
+densities = [etden,waden,feden]
+temps = [ettemp,watemp,fetemp]
+traydens = [np.mean([0.8288,0.8312,0.8301]),np.mean([0.8716,0.8700,0.8688]),np.mean([0.9562,0.9560,0.9557]),np.mean([0.9683,0.9667,0.9681])]
+traytemps =[np.mean([25.1,23.7,23.9]),np.mean([21.9,22.4,22.0]),np.mean([24.0,23.9,24.3]),np.mean([21.2,21.1,21.3]),np.mean([26.1,24.3,24.4])]
+###THEORETICAL DATA
+
+
+densities20 = np.linspace(0.7894,0.99819,100) ## 20C
 densities25 = np.linspace(0.7850,0.99705,100) ## 25C
-temps = 20*np.ones(len(densities))
-temps60 = 15.55556*np.ones(len(densities))
-temps25 = 25**np.ones(len(densities))
-#densities = np.array([0.921866667,
-#0.8534,
-#0.969866667,
-#0.958766667,
-#0.9743,
-#0.827233333,
-#0.874366667,
-#0.904866667,
-#0.978333333,
-#])
+densities60 = np.linspace(0.7932,0.99898,100) ## @ 60F
+
+temps20  = 20*np.ones(len(densities20))
+temps60 = 15.55556*np.ones(len(densities25))
+temps25 = 25**np.ones(len(densities60))
 
 #densuncertanties = np.array([0.003607468,
 #0.005066667,
@@ -163,27 +161,25 @@ temps25 = 25**np.ones(len(densities))
 #0.000309826,
 #0.006791996,
 #])
-#temps = np.array([23.66666667,
-#22.73333333,
-#26.2,
-#25.9,
-#25.23333333,
-#23.66666667,
-#24.4,
-#25.93333333,
-#25.46666667,
-#])
+
 proofs = []
 proofs60 = []
 proofs25 = []
+proofs20 = []
+trayproofs = []
 for i in range(len(densities)):
     proofs.append(interpolate6(densities[i],temps[i]))
+for i in range(len(densities60)):
     proofs60.append(interpolate6(densities60[i],temps60[i]))
     proofs25.append(interpolate6(densities25[i],temps25[i]))
-
+    proofs20.append(interpolate6(densities20[i],temps20[i]))
+for i in range(len(traydens)):
+    trayproofs.append(interpolate6(traydens[i],traytemps[i]))
 proofs = sorted(np.array(proofs,dtype=float), reverse=True)##remove sorted for experimental data
 proofs60 = sorted(np.array(proofs60,dtype=float), reverse=True)
 proofs25 = sorted(np.array(proofs25,dtype=float), reverse=True)
+proofs20 = sorted(np.array(proofs20,dtype=float), reverse=True)
+trayproofs = sorted(np.array(trayproofs,dtype=float), reverse=True)
 #tempuncertainties = np.array([0.117103375,
 #0.117103375,
 #0.202828995,
@@ -198,21 +194,34 @@ proofs25 = sorted(np.array(proofs25,dtype=float), reverse=True)
 trueproofs = []
 trueproofs60 = []
 trueproofs25 = []
+trueproofs20 = []
+traytrueproofs = []
 for i in range(len(proofs)):
     trueproofs.append(trueproof(proofs[i], temps[i]))
+    
+for i in range(len(proofs25)):
     trueproofs60.append(trueproof(proofs60[i], temps60[i]))
     trueproofs25.append(trueproof(proofs25[i], temps25[i]))
+    trueproofs20.append(trueproof(proofs20[i], temps20[i]))
+for i in range(len(trayproofs)):
+    traytrueproofs.append(trueproof(trayproofs[i], traytemps[i]))
 molefrs = []
 molefrs60 = []
 molefrs25 = []
+molefrs20 = []
+traymolefrs = []
 for i in range(len(trueproofs)):
     molefrs.append(molefractions(trueproofs[i]))
+for i in range(len(trueproofs25)):
     molefrs60.append(molefractions(trueproofs60[i]))
     molefrs25.append(molefractions(trueproofs25[i]))
+    molefrs20.append(molefractions(trueproofs20[i]))
+for i in range(len(traytrueproofs)):
+    traymolefrs.append(molefractions(traytrueproofs[i]))
 plt.figure('1')
-plt.plot(densities,molefrs,'o', markersize=2,label='20°C')
 plt.plot(densities60,molefrs60,'o', markersize=2,label='60°F')
 plt.plot(densities25,molefrs25,'o', markersize=2,label='25°C')
+plt.plot(densities20,molefrs20,'o', markersize=2,label='20°C')
 plt.legend()
 plt.grid(True)
 plt.ylabel('Mole Fraction of Ethanol')
@@ -220,7 +229,7 @@ plt.xlabel('Density of Mixture (g/mL)')
 plt.figure('2')
 plt.ylabel('True Proof')
 plt.xlabel('Density of Mixture (g/mL)')
-plt.plot(densities,trueproofs,'o', markersize=2,label='20°C')
+plt.plot(densities20,trueproofs20,'o', markersize=2,label='20°C')
 plt.plot(densities60,trueproofs60,'o', markersize=2,label='60°F')
 plt.plot(densities25,trueproofs25,'o', markersize=2,label='25°C')
 plt.legend()

@@ -83,11 +83,29 @@ for x1 in x_vals:
     sol_T.append(solved_T)
     y1_value = calcy(solved_T,x1,P)
     sol_y.append(y1_value)
+traytemps = [	78.68686869,		80.05959596,		85.92020202,	87.68030303]
+P = 764.54  # mmHg, assuming constant pressure for calculations
+
+# Initialize lists to store results
+
+tray_theoretical_x = []
+# Calculate the theoretical mole fractions for each tray temperature
+for temp in traytemps:
+    # Use lambda to reverse argument order (x is now first)
+    sol = so.root(
+        lambda x, T_arg, P_arg: vle(T_arg, x, P_arg),  # Reverse args: x → T_arg → P_arg
+        x0=[0.5],  # Initial guess for x1
+        args=(temp, P),  # (T_arg, P_arg)
+          # Restrict x1 to [0,1]
+    )
+    mol_frac = sol.x[0]
+    tray_theoretical_x.append(mol_frac)
+
 
 reflux = 5
-feed_frac_x = 0.102949 ##mol fr ethanol of feed stream
-product_frac_x = 0.59685
-waste_frac_y = 0.03558
+feed_frac_x = 0.0547167 ##mol fr ethanol of feed stream
+product_frac_x = 0.74813937
+waste_frac_y = 0.0184502
 feed_dens = 0.978066
 prod_dens = 0.8161
 waste_dens = 0.9885666
@@ -128,8 +146,8 @@ plt.plot(waste_frac_y, waste_frac_y , 'b.')
 plt.plot(feed_frac_x, feed_frac_x , 'b.')
 plt.plot(product_frac_x, product_frac_x , 'b.')
 plt.plot(waste_frac_y*np.ones(len(ys)),ys,'k--' )
-plt.plot(0.1029494*np.ones(len(ys)),ys,'k--' )
-plt.plot(x_vals[5:30], oly[5:30] , 'r-', label='operating line')
+plt.plot(feed_frac_x*np.ones(len(ys)),ys,'k--' )
+plt.plot(x_vals[3:38], oly[3:38] , 'r-', label='operating line')
 plt.plot(0, -10 , 'r-', label='operating line (stripping)')
 plt.plot(0, -10 , 'g-', label='q - line')
 
