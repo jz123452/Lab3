@@ -128,7 +128,7 @@ def molefractions(CP):
 
 
 
-#EXPERIMENTAL DATA
+#EXPERIMENTAL DATA (3.2)
 etden = np.mean([0.8164,0.8168,0.8151]) #g/cm @ 20c
 ettemp = np.mean([26.2,26.1,26.2])
 waden = np.mean([0.9879,0.9892,0.9886])
@@ -141,7 +141,6 @@ traydens = [np.mean([0.8288,0.8312,0.8301]),np.mean([0.8716,0.8700,0.8688]),np.m
 traytemps =[np.mean([25.1,23.7,23.9]),np.mean([21.9,22.4,22.0]),np.mean([24.0,23.9,24.3]),np.mean([21.2,21.1,21.3]),np.mean([26.1,24.3,24.4])]
 ###THEORETICAL DATA
 
-
 densities20 = np.linspace(0.7894,0.99819,100) ## 20C
 densities25 = np.linspace(0.7850,0.99705,100) ## 25C
 densities60 = np.linspace(0.7932,0.99898,100) ## @ 60F
@@ -150,17 +149,6 @@ temps20  = 20*np.ones(len(densities20))
 temps60 = 15.55556*np.ones(len(densities25))
 temps25 = 25**np.ones(len(densities60))
 
-#densuncertanties = np.array([0.003607468,
-#0.005066667,
-#0.002031668,
-#0.00433757,
-#0.000405658,
-#0.000309826,
-#0.000309826,
-#0.00223419,
-#0.000309826,
-#0.006791996,
-#])
 
 proofs = []
 proofs60 = []
@@ -180,17 +168,7 @@ proofs60 = sorted(np.array(proofs60,dtype=float), reverse=True)
 proofs25 = sorted(np.array(proofs25,dtype=float), reverse=True)
 proofs20 = sorted(np.array(proofs20,dtype=float), reverse=True)
 trayproofs = sorted(np.array(trayproofs,dtype=float), reverse=True)
-#tempuncertainties = np.array([0.117103375,
-#0.117103375,
-#0.202828995,
-#0.202828995,
-#0.117103375,
-#0.117103375,
-#8.82543E-15,
-#0.309826407,
-#0.117103375,
-#0.202828995,
-#])
+
 trueproofs = []
 trueproofs60 = []
 trueproofs25 = []
@@ -218,6 +196,80 @@ for i in range(len(trueproofs25)):
     molefrs20.append(molefractions(trueproofs20[i]))
 for i in range(len(traytrueproofs)):
     traymolefrs.append(molefractions(traytrueproofs[i]))
+    
+######### EQUATION 2
+### 3.1 Data
+#densuncertanties = np.array([0.003607468,
+#0.005066667,
+#0.002031668,
+#0.00433757,
+#0.000405658,
+#0.000309826,
+#0.000309826,
+#0.00223419,
+#0.000309826,
+#0.006791996,
+#])
+
+#tempuncertainties = np.array([0.117103375,
+#0.117103375,
+#0.202828995,
+#0.202828995,
+#0.117103375,
+#0.117103375,
+#8.82543E-15,
+#0.309826407,
+#0.117103375,
+#0.202828995,
+#])
+water_density_table = [
+    {"temp_C":4, "density":0.99997},
+    {"temp_C":15.56, "density":0.99904},  # 60°F base
+    {"temp_C":20, "density":0.99823},
+    {"temp_C":25, "density":0.99705},
+    # ... other temp/density pairs
+]
+def get_water_density(temp_C):
+    return np.interp(temp_C, 
+                    [x["temp_C"] for x in water_density_table],
+                    [x["density"] for x in water_density_table])
+pycnotemps = [24.4,
+24.46666667,
+25.33333333,
+25.66666667,
+25.26666667,
+22.8,
+23.73333333,
+22.93333333,
+24.93333333,
+22.66666667,
+]
+m_e = 35.38 ##average empty pycno mass(from excel)
+m_w = 60.80
+m_f = [59.00,
+57.11,
+59.11,
+59.89,
+60.12,
+56.44,
+57.57,
+58.31,
+55.35,
+59.00
+]
+pycnodens = []
+def pycnopf(temp,m_e,m_w,m_f):
+    d_w = get_water_density(temp)
+    ### INPUTS, 
+    ## d_water = f(t), plug in temp
+    ## m_e = mass of empty pycnometer, grams
+    ## m_w mass of pycnometer filled with water
+    ## m_f final pycnometer mass
+    d_f = ((m_f - m_e)/(m_w - m_e))*d_w
+    return d_f
+for i in range(len(m_f)):
+    pycnodens.append(pycnopf(pycnotemps[i],m_e,m_w,m_f[i]))
+    
 plt.figure('1')
 plt.plot(densities60,molefrs60,'o', markersize=2,label='60°F')
 plt.plot(densities25,molefrs25,'o', markersize=2,label='25°C')

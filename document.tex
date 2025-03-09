@@ -17,7 +17,7 @@
 
 \begin{document}
 	
-	\title{Determination of Air, Argon, and Carbon Dioxide Material and Physical Properties Using a Gas Piston Cylinders}
+	\title{Pycnometry and Continuous Distillation of Ethanol-Water mixtures}
 	
 	\author{Joseph Zimmerman}
 	% <-this % stops a space
@@ -27,7 +27,7 @@
 	\maketitle
 	
 	\begin{abstract}
-		In this paper, two experiments were conducted on ethanol-water mixtures. A pycnometer and quartz-tubed densitometer were used to determine liquid densities across a variety of compositions. A \i{true proof}
+		In this paper, two experiments were conducted on ethanol-water mixtures. A pycnometer and quartz-tubed densitometer were used to determine liquid densities across a variety of compositions of ethanol and water. Alcohol-gauging tables from the US Alcohol and Tobacco Tax and Trade Bureau (TTB) were used to correlate theoretical densities of various compositions of ethanol and water at various temperatures to apparent proofs at 60F and finally correct to true proof and mole fraction of ethanol. Densities, measured through the pycnometer and densitometer, were compared. 
 	\end{abstract}
 	
 	\begin{IEEEkeywords}
@@ -35,23 +35,25 @@
 	\end{IEEEkeywords}
 	
 	\section{Introduction}
-	\IEEEPARstart{G}{asses} compressed adiabatically (i.e, without flow of heat from the system), experience a rise in temperature at a higher rate than those compressed isothermally, where work is dissipated as heat. The expansion of the gas can be calculated using the ratio of the gases’ constant pressure and volume heat capacities, denoted as $\gamma$ (gamma, for an ideal gas) or $\kappa$ (kappa, isentropic exponent, for a real gas), as was famously demonstrated in an experiment, conducted by Eduard Rüchardt. The experiment aims measures $\kappa$ by using gas as a ‘spring’ in a cylinder/piston apperatice, and inducing harmonic oscillation by rapidly disturbing the system. The angular frequency can then be measured/deduced to enable calculation of $\kappa$. In our experiment, we first compared our pressure sensor against calibration values specified by the manufacturer, with air as the internal fluid, by measuring different voltage readings (in mV) at 6 different static pressures in a gas piston, induced by placing weights on top of the piston’s plunger. Then, we conducted a rendition of the Rüchardt’s experiment in the gas-cylinder apparatus using air, Argon, and CO2 as internal fluids, to determine the values of $\kappa$ for each gas species.
-	
+	\IEEEPARstart{P}{ycnometry} is a fundamental laboratory technique used to determine the density of solid or liquid substances by measuring their mass and volume and comparing them to a known volume. A pycnometer—a calibrated glass flask with a defined volume—is filled with the sample, and its mass is compared to the mass of the same flask filled with a reference fluid (water in our case). Digital densitometers can also be used to determine the density of a solution. Our digital densitometer measures density through a vibrating "U-Tube". The sample is introduced into a U-shaped borosilicate glass tube that is being excited to vibrate at its characteristic frequency electronically. The characteristic frequency changes depending on the density of the sample. Through determination of the characteristic frequency the density of the sample can be calculated. In the first part of our experiment, we determined the densities of various compositions of ethanol-water through pycnometry and a digital densitometer. Alcohol-gauging tables from the US Alcohol and Tobacco Tax and Trade Bureau (TTB) were used to correlate theoretical densities of various compositions ranging from pure ethanol to pure water at various temperatures to apparent proofs at 60F and finally correct to extract true proof and mole fraction of ethanol.
+	\newline
+	\newline
+	\-\hspace{0.6cm}This theoretical array of densities and corresponding mole fractions were then used in the second part of the lab, where we performed a continuous distillation of an ethanol-water mixture at two different reflux ratios, 4 and 5 in our case. 
 	
 	\section{Theory}
-	\subsection{Rüchardt Experiment - Pressure Sensor Calibration}
-	The sensor used to measure the pressure inside of the piston in our Rüchardt experiment was a PendoTech single-use pressure sensor. In our experiment, the sensor recorded voltage readings, in millivolts (mV). To convert these readings into usable pressure data for later $\kappa$ calculation, the sensor must be calibrated. Weights can be added on to the apparatus to induce a known pressure in the gas in the piston. In our case, we took measurements across 6 different average weights \cite{ref1}. 
+	\subsection{Pycnometry}
+	The pycnometer used in our experiment was a Kimble KiMax pycnometer. By measuring the mass of the empty pycnometer, the mass of the pycnometer filled with water (our reference fluid), the known density of water, and the mass of the pycnometer filled with the experimental solution, the density of the experimental solution can be determined by \cite{ref1}. 
 	\begin{equation}
 		\label{deqn_ex1}
-		Force = Mass * Acceleration
+		V = \frac{m_{w}-m_{e}}{\rho_{water}(t)} = \frac{m_{sample}-m_{e}}{\rho_{sample}}
 	\end{equation}
+	where $m_{w}$ is the mass of the pycnometer filled with water, $m_{e}$ is the mass of the empty pycnometer, $\rho_{water}(t)$ is the density of water at temperature T, and $\rho_{sample}$ is the density of the sample at T. This equation can be arranged to solve for $\rho_{sample}$.
 	\begin{equation}
 		\label{deqn_ex2}
-		Pressure = Force / Area
+		\rho_{sample}  = \frac{m_{sample} - m_{empty}}{m_{water}-m_{sample}}\cdot\rho_{water}(T)
 	\end{equation}
-	Voltage readings can then be taken at various known pressures, ensuring at least three trials and linearly regressed to yield a slope in [Voltage/Pressure] that can be used to later convert voltage measurements to pressure.
 	
-	\subsection{Rüchardt Experiment - Kappa Calculation}
+	\subsection{Gauging alcohol with TTB tables}
 	The Gruneisen parameter, $\gamma$, of a gas is a dimensionless quantity that relates volume changes of a gas to it's thermal properties. For an ideal gas, it can be shown that
 	\begin{equation}
 		\label{deqn_ex3}
@@ -206,326 +208,7 @@
 	
 	\section{Technical Advances}
 	
-	Typographical conventions for mathematical formulas have been developed to {\bf provide uniformity and clarity of presentation across mathematical texts}. This enables the readers of those texts to both understand the author's ideas and to grasp new concepts quickly. While software such as \LaTeX \ and MathType\textsuperscript{\textregistered} can produce aesthetically pleasing math when used properly, it is also very easy to misuse the software, potentially resulting in incorrect math display.
 	
-	IEEE aims to provide authors with the proper guidance on mathematical typesetting style and assist them in writing the best possible article. As such, IEEE has assembled a set of examples of good and bad mathematical typesetting \cite{ref1,ref2,ref3,ref4,ref5}. 
-	
-	Further examples can be found at \url{http://journals.ieeeauthorcenter.ieee.org/wp-content/uploads/sites/7/IEEE-Math-Typesetting-Guide-for-LaTeX-Users.pdf}
-	
-	\subsection{Display Equations}
-	The simple display equation example shown below uses the ``equation'' environment. To number the equations, use the $\backslash${\tt{label}} macro to create an identifier for the equation. LaTeX will automatically number the equation for you.
-	\begin{equation}
-		\label{deqn_ex1}
-		x = \sum_{i=0}^{n} 2{i} Q.
-	\end{equation}
-	
-	\noindent is coded as follows:
-	\begin{verbatim}
-		\begin{equation}
-			\label{deqn_ex1}
-			x = \sum_{i=0}^{n} 2{i} Q.
-		\end{equation}
-	\end{verbatim}
-	
-	To reference this equation in the text use the $\backslash${\tt{ref}} macro. 
-	Please see (\ref{deqn_ex1})\\
-	\noindent is coded as follows:
-	\begin{verbatim}
-		Please see (\ref{deqn_ex1})\end{verbatim}
-	
-	\subsection{Equation Numbering}
-	{\bf{Consecutive Numbering:}} Equations within an article are numbered consecutively from the beginning of the
-	article to the end, i.e., (1), (2), (3), (4), (5), etc. Do not use roman numerals or section numbers for equation numbering.
-	
-	\noindent {\bf{Appendix Equations:}} The continuation of consecutively numbered equations is best in the Appendix, but numbering
-	as (A1), (A2), etc., is permissible.\\
-	
-	\noindent {\bf{Hyphens and Periods}}: Hyphens and periods should not be used in equation numbers, i.e., use (1a) rather than
-	(1-a) and (2a) rather than (2.a) for subequations. This should be consistent throughout the article.
-	
-	\subsection{Multi-Line Equations and Alignment}
-	Here we show several examples of multi-line equations and proper alignments.
-	
-	\noindent {\bf{A single equation that must break over multiple lines due to length with no specific alignment.}}
-	\begin{multline}
-		\text{The first line of this example}\\
-		\text{The second line of this example}\\
-		\text{The third line of this example}
-	\end{multline}
-	
-	\noindent is coded as:
-	\begin{verbatim}
-		\begin{multline}
-			\text{The first line of this example}\\
-			\text{The second line of this example}\\
-			\text{The third line of this example}
-		\end{multline}
-	\end{verbatim}
-	
-	\noindent {\bf{A single equation with multiple lines aligned at the = signs}}
-	\begin{align}
-		a &= c+d \\
-		b &= e+f
-	\end{align}
-	\noindent is coded as:
-	\begin{verbatim}
-		\begin{align}
-			a &= c+d \\
-			b &= e+f
-		\end{align}
-	\end{verbatim}
-	
-	The {\tt{align}} environment can align on multiple  points as shown in the following example:
-	\begin{align}
-		x &= y & X & =Y & a &=bc\\
-		x' &= y' & X' &=Y' &a' &=bz
-	\end{align}
-	\noindent is coded as:
-	\begin{verbatim}
-		\begin{align}
-			x &= y & X & =Y & a &=bc\\
-			x' &= y' & X' &=Y' &a' &=bz
-		\end{align}
-	\end{verbatim}
-	
-	
-	
-	
-	
-	\subsection{Subnumbering}
-	The amsmath package provides a {\tt{subequations}} environment to facilitate subnumbering. An example:
-	
-	\begin{subequations}\label{eq:2}
-		\begin{align}
-			f&=g \label{eq:2A}\\
-			f' &=g' \label{eq:2B}\\
-			\mathcal{L}f &= \mathcal{L}g \label{eq:2c}
-		\end{align}
-	\end{subequations}
-	
-	\noindent is coded as:
-	\begin{verbatim}
-		\begin{subequations}\label{eq:2}
-			\begin{align}
-				f&=g \label{eq:2A}\\
-				f' &=g' \label{eq:2B}\\
-				\mathcal{L}f &= \mathcal{L}g \label{eq:2c}
-			\end{align}
-		\end{subequations}
-		
-	\end{verbatim}
-	
-	\subsection{Matrices}
-	There are several useful matrix environments that can save you some keystrokes. See the example coding below and the output.
-	
-	\noindent {\bf{A simple matrix:}}
-	\begin{equation}
-		\begin{matrix}  0 &  1 \\ 
-			1 &  0 \end{matrix}
-	\end{equation}
-	is coded as:
-	\begin{verbatim}
-		\begin{equation}
-			\begin{matrix}  0 &  1 \\ 
-				1 &  0 \end{matrix}
-		\end{equation}
-	\end{verbatim}
-	
-	\noindent {\bf{A matrix with parenthesis}}
-	\begin{equation}
-		\begin{pmatrix} 0 & -i \\
-			i &  0 \end{pmatrix}
-	\end{equation}
-	is coded as:
-	\begin{verbatim}
-		\begin{equation}
-			\begin{pmatrix} 0 & -i \\
-				i &  0 \end{pmatrix}
-		\end{equation}
-	\end{verbatim}
-	
-	\noindent {\bf{A matrix with square brackets}}
-	\begin{equation}
-		\begin{bmatrix} 0 & -1 \\ 
-			1 &  0 \end{bmatrix}
-	\end{equation}
-	is coded as:
-	\begin{verbatim}
-		\begin{equation}
-			\begin{bmatrix} 0 & -1 \\ 
-				1 &  0 \end{bmatrix}
-		\end{equation}
-	\end{verbatim}
-	
-	\noindent {\bf{A matrix with curly braces}}
-	\begin{equation}
-		\begin{Bmatrix} 1 &  0 \\ 
-			0 & -1 \end{Bmatrix}
-	\end{equation}
-	is coded as:
-	\begin{verbatim}
-		\begin{equation}
-			\begin{Bmatrix} 1 &  0 \\ 
-				0 & -1 \end{Bmatrix}
-	\end{equation}\end{verbatim}
-	
-	\noindent {\bf{A matrix with single verticals}}
-	\begin{equation}
-		\begin{vmatrix} a &  b \\ 
-			c &  d \end{vmatrix}
-	\end{equation}
-	is coded as:
-	\begin{verbatim}
-		\begin{equation}
-			\begin{vmatrix} a &  b \\ 
-				c &  d \end{vmatrix}
-	\end{equation}\end{verbatim}
-	
-	\noindent {\bf{A matrix with double verticals}}
-	\begin{equation}
-		\begin{Vmatrix} i &  0 \\ 
-			0 & -i \end{Vmatrix}
-	\end{equation}
-	is coded as:
-	\begin{verbatim}
-		\begin{equation}
-			\begin{Vmatrix} i &  0 \\ 
-				0 & -i \end{Vmatrix}
-	\end{equation}\end{verbatim}
-	
-	\subsection{Arrays}
-	The {\tt{array}} environment allows you some options for matrix-like equations. You will have to manually key the fences, but there are other options for alignment of the columns and for setting horizontal and vertical rules. The argument to {\tt{array}} controls alignment and placement of vertical rules.
-	
-	A simple array
-	\begin{equation}
-		\left(
-		\begin{array}{cccc}
-			a+b+c & uv & x-y & 27\\
-			a+b & u+v & z & 134
-		\end{array}\right)
-	\end{equation}
-	is coded as:
-	\begin{verbatim}
-		\begin{equation}
-			\left(
-			\begin{array}{cccc}
-				a+b+c & uv & x-y & 27\\
-				a+b & u+v & z & 134
-			\end{array} \right)
-		\end{equation}
-	\end{verbatim}
-	
-	A slight variation on this to better align the numbers in the last column
-	\begin{equation}
-		\left(
-		\begin{array}{cccr}
-			a+b+c & uv & x-y & 27\\
-			a+b & u+v & z & 134
-		\end{array}\right)
-	\end{equation}
-	is coded as:
-	\begin{verbatim}
-		\begin{equation}
-			\left(
-			\begin{array}{cccr}
-				a+b+c & uv & x-y & 27\\
-				a+b & u+v & z & 134
-			\end{array} \right)
-		\end{equation}
-	\end{verbatim}
-	
-	An array with vertical and horizontal rules
-	\begin{equation}
-		\left( \begin{array}{c|c|c|r}
-			a+b+c & uv & x-y & 27\\ \hline
-			a+b & u+v & z & 134
-		\end{array}\right)
-	\end{equation}
-	is coded as:
-	\begin{verbatim}
-		\begin{equation}
-			\left(
-			\begin{array}{c|c|c|r}
-				a+b+c & uv & x-y & 27\\
-				a+b & u+v & z & 134
-			\end{array} \right)
-		\end{equation}
-	\end{verbatim}
-	Note the argument now has the pipe "$\vert$" included to indicate the placement of the vertical rules.
-	
-	
-	\subsection{Cases Structures}
-	Many times cases can be miscoded using the wrong environment, i.e., {\tt{array}}. Using the {\tt{cases}} environment will save keystrokes (from not having to type the $\backslash${\tt{left}}$\backslash${\tt{lbrace}}) and automatically provide the correct column alignment.
-	\begin{equation*}
-		{z_m(t)} = \begin{cases}
-			1,&{\text{if}}\ {\beta }_m(t) \\ 
-			{0,}&{\text{otherwise.}} 
-		\end{cases}
-	\end{equation*}
-	\noindent is coded as follows:
-	\begin{verbatim}
-		\begin{equation*}
-			{z_m(t)} = 
-			\begin{cases}
-				1,&{\text{if}}\ {\beta }_m(t),\\ 
-				{0,}&{\text{otherwise.}} 
-			\end{cases}
-		\end{equation*}
-	\end{verbatim}
-	\noindent Note that the ``\&'' is used to mark the tabular alignment. This is important to get  proper column alignment. Do not use $\backslash${\tt{quad}} or other fixed spaces to try and align the columns. Also, note the use of the $\backslash${\tt{text}} macro for text elements such as ``if'' and ``otherwise.''
-	
-	\subsection{Function Formatting in Equations}
-	Often, there is an easy way to properly format most common functions. Use of the $\backslash$ in front of the function name will in most cases, provide the correct formatting. When this does not work, the following example provides a solution using the $\backslash${\tt{text}} macro:
-	
-	\begin{equation*} 
-		d_{R}^{KM} = \underset {d_{l}^{KM}} {\text{arg min}} \{ d_{1}^{KM},\ldots,d_{6}^{KM}\}.
-	\end{equation*}
-	
-	\noindent is coded as follows:
-	\begin{verbatim}
-		\begin{equation*} 
-			d_{R}^{KM} = \underset {d_{l}^{KM}} 
-			{\text{arg min}} \{ d_{1}^{KM},
-			\ldots,d_{6}^{KM}\}.
-		\end{equation*}
-	\end{verbatim}
-	
-	\subsection{ Text Acronyms Inside Equations}
-	This example shows where the acronym ``MSE" is coded using $\backslash${\tt{text\{\}}} to match how it appears in the text.
-	
-	\begin{equation*}
-		\text{MSE} = \frac {1}{n}\sum _{i=1}^{n}(Y_{i} - \hat {Y_{i}})^{2}
-	\end{equation*}
-	
-	\begin{verbatim}
-		\begin{equation*}
-			\text{MSE} = \frac {1}{n}\sum _{i=1}^{n}
-			(Y_{i} - \hat {Y_{i}})^{2}
-		\end{equation*}
-	\end{verbatim}
-	
-	\section{Conclusion}
-	The conclusion goes here.
-	
-	
-	
-	
-	
-	{\appendix[Proof of the Zonklar Equations]
-		Use $\backslash${\tt{appendix}} if you have a single appendix:
-		Do not use $\backslash${\tt{section}} anymore after $\backslash${\tt{appendix}}, only $\backslash${\tt{section*}}.
-		If you have multiple appendixes use $\backslash${\tt{appendices}} then use $\backslash${\tt{section}} to start each appendix.
-		You must declare a $\backslash${\tt{section}} before using any $\backslash${\tt{subsection}} or using $\backslash${\tt{label}} ($\backslash${\tt{appendices}} by itself
-		starts a section numbered zero.)}
-	
-	
-	
-	%{\appendices
-		%\section*{Proof of the First Zonklar Equation}
-		%Appendix one text goes here.
-		% You can choose not to have a title for an appendix if you want by leaving the argument blank
-		%\section*{Proof of the Second Zonklar Equation}
-		%Appendix two text goes here.}
 	
 	
 	
