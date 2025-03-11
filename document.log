@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.2.11)  8 MAR 2025 17:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.2.11)  10 MAR 2025 20:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -396,10 +396,12 @@ Package pdftexcmds Info: \pdfdraftmode found.
 \l__siunitx_unit_tmp_int=\count311
 \l__siunitx_unit_position_int=\count312
 \l__siunitx_unit_total_int=\count313
+) (C:\Users\i5fou\AppData\Local\Programs\MiKTeX\tex/latex/gensymb\gensymb.sty
+Package: gensymb 2022/10/17 v1.0.2 (KJH)
 )
 Package translations Info: No language package found. I am going to use `englis
-h' as default language. on input line 18.
- (C:\Users\i5fou\AppData\Local\Programs\MiKTeX\tex/latex/graphics\color.sty
+h' as default language. on input line 19.
+(C:\Users\i5fou\AppData\Local\Programs\MiKTeX\tex/latex/graphics\color.sty
 Package: color 2022/01/06 v1.3d Standard LaTeX Color (DPC)
 
 (C:\Users\i5fou\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg
@@ -425,20 +427,20 @@ LaTeX Warning: Label `deqn_ex10' multiply defined.
 )
 \openout1 = `document.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
 
 -- Lines per column: 58 (exact).
 Package caption Info: Begin \AtBeginDocument code.
@@ -476,31 +478,49 @@ File: translations-basic-dictionary-english.trsl (english translation file `tra
 nslations-basic-dictionary')
 )
 Package translations Info: loading dictionary `translations-basic-dictionary' f
-or `english'. on input line 18.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 34.
+or `english'. on input line 19.
+\symgns@font=\mathgroup6
+LaTeX Font Info:    Overwriting symbol font `gns@font' in version `bold'
+(Font)                  TS1/ptm/m/n --> TS1/ptm/b/n on input line 19.
+Package gensymb Info: Math companion symbols declared on input line 19.
+LaTeX Info: Redefining \degree on input line 19.
+LaTeX Info: Redefining \celsius on input line 19.
+Package gensymb Info: Using text companion symbols for \degree, \celsius and \p
+erthousand on input line 19.
+LaTeX Info: Redefining \ohm on input line 19.
+Package gensymb Info: Using \textohm for \ohm on input line 19.
+LaTeX Info: Redefining \micro on input line 19.
+Package gensymb Info: Using \textmu for \micro on input line 19.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 35.
 
 
 (C:\Users\i5fou\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 34.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 35.
 
 
 (C:\Users\i5fou\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 1852) in paragraph at lines 38--42
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 3
+5.
+
+(C:\Users\i5fou\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
+File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
+)
+Underfull \hbox (badness 1852) in paragraph at lines 39--43
 \OT1/ptm/m/n/10 to a known vol-ume. A py-c-nome-ter|a cal-i-brated glass
  []
 
 
-Underfull \hbox (badness 2213) in paragraph at lines 38--42
+Underfull \hbox (badness 2213) in paragraph at lines 39--43
 \OT1/ptm/m/n/10 py-c-nom-e-try and a dig-i-tal den-sit-o-me-ter. Alcohol-gaugin
 g
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 38--42
+Underfull \hbox (badness 10000) in paragraph at lines 39--43
 
  []
 
@@ -509,76 +529,79 @@ fou/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}
 
 
 ]
-<fig1.png, id=17, 386.94562pt x 266.9975pt>
+<fig1.png, id=16, 386.94562pt x 266.9975pt>
 File: fig1.png Graphic file (type png)
 <use fig1.png>
-Package pdftex.def Info: fig1.png  used on input line 139.
+Package pdftex.def Info: fig1.png  used on input line 143.
 (pdftex.def)             Requested size: 260.17244pt x 179.52293pt.
 
-Overfull \hbox (8.17244pt too wide) in paragraph at lines 139--140
+Overfull \hbox (8.17244pt too wide) in paragraph at lines 143--144
  [][] 
  []
 
-<fig2.png, id=19, 389.95688pt x 266.9975pt>
+<fig2.png, id=18, 389.95688pt x 266.9975pt>
 File: fig2.png Graphic file (type png)
 <use fig2.png>
-Package pdftex.def Info: fig2.png  used on input line 171.
+Package pdftex.def Info: fig2.png  used on input line 175.
 (pdftex.def)             Requested size: 361.34999pt x 247.42102pt.
 LaTeX Font Info:    Trying to load font information for OT1+phv on input line 1
-71.
+75.
 (C:\Users\i5fou\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1phv.fd
 File: ot1phv.fd 2020/03/25 scalable font definitions for OT1/phv.
 )
 LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 1
-77.
+81.
 
 (C:\Users\i5fou\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
-Underfull \hbox (badness 4832) in paragraph at lines 216--221
+[2 <./fig1.png>]
+Underfull \hbox (badness 4832) in paragraph at lines 220--225
 []\OT1/ptm/m/n/10 You can use a bib-li-og-ra-phy gen-er-ated by Bib-TeX
  []
 
 
-Underfull \hbox (badness 4608) in paragraph at lines 216--221
+Underfull \hbox (badness 4608) in paragraph at lines 220--225
 \OT1/ptm/m/n/10 as a .bbl file. Bib-TeX doc-u-men-ta-tion can be eas-ily
  []
 
 
-Underfull \hbox (badness 6380) in paragraph at lines 216--221
+Underfull \hbox (badness 6380) in paragraph at lines 220--225
 \OT1/ptm/m/n/10 ob-tained at: http://mirror.ctan.org/biblio/bibtex/contrib/doc/
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 216--221
+Underfull \hbox (badness 10000) in paragraph at lines 220--225
 \OT1/ptm/m/n/10 The IEEE-tran Bib-TeX style sup-port page is:
  []
 
-[2 <./fig1.png>] [3 <./fig2.png>]
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [3 <./fig2.png>]
 File: fig1.png Graphic file (type png)
 <use fig1.png>
-Package pdftex.def Info: fig1.png  used on input line 276.
+Package pdftex.def Info: fig1.png  used on input line 280.
 (pdftex.def)             Requested size: 72.2687pt x 49.86635pt.
 File: fig1.png Graphic file (type png)
 <use fig1.png>
-Package pdftex.def Info: fig1.png  used on input line 276.
+Package pdftex.def Info: fig1.png  used on input line 280.
 (pdftex.def)             Requested size: 72.2687pt x 49.86635pt.
 LaTeX Font Info:    Trying to load font information for OMS+pcr on input line 2
-77.
-
-(C:\Users\i5fou\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omspcr.fd
+81.
+ (C:\Users\i5fou\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omspcr.fd
 File: omspcr.fd 
 )
 LaTeX Font Info:    Font shape `OMS/pcr/m/n' in size <8> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 277.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 281.
 
-Underfull \hbox (badness 10000) in paragraph at lines 276--279
+Underfull \hbox (badness 10000) in paragraph at lines 280--283
 \OT1/ptm/m/n/8 and then for the 1st ar-gu-ment use
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 276--279
+Underfull \hbox (badness 10000) in paragraph at lines 280--283
 \OMS/cmsy/m/n/8 n$\OT1/pcr/m/n/8 includegraphics \OT1/ptm/m/n/8 to de-clare and
  link
  []
@@ -594,13 +617,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 9341 strings out of 474486
- 215011 string characters out of 5743755
- 1952542 words of memory out of 5000000
- 31506 multiletter control sequences out of 15000+600000
- 609762 words of font info for 131 fonts, out of 8000000 for 9000
+ 9431 strings out of 474486
+ 216538 string characters out of 5743755
+ 1950542 words of memory out of 5000000
+ 31588 multiletter control sequences out of 15000+600000
+ 611646 words of font info for 137 fonts, out of 8000000 for 9000
  1145 hyphenation exceptions out of 8191
- 73i,12n,80p,1395b,531s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 73i,12n,80p,1395b,534s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/i5fou/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
 cmex10.pfb><C:/Users/i5fou/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
 fonts/cm/cmmi10.pfb><C:/Users/i5fou/AppData/Local/Programs/MiKTeX/fonts/type1/p
@@ -622,7 +645,7 @@ onts/type1/urw/times/utmb8a.pfb><C:/Users/i5fou/AppData/Local/Programs/MiKTeX/f
 onts/type1/urw/times/utmbi8a.pfb><C:/Users/i5fou/AppData/Local/Programs/MiKTeX/
 fonts/type1/urw/times/utmr8a.pfb><C:/Users/i5fou/AppData/Local/Programs/MiKTeX/
 fonts/type1/urw/times/utmri8a.pfb>
-Output written on document.pdf (4 pages, 281119 bytes).
+Output written on document.pdf (4 pages, 281310 bytes).
 PDF statistics:
  119 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

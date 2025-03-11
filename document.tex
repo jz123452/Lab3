@@ -12,6 +12,7 @@
 \usepackage{cite}
 \usepackage{BookTabs}
 \usepackage{siunitx}
+\usepackage{gensymb}
 \hyphenation{op-tical net-works semi-conduc-tor IEEE-Xplore}
 % updated with editorial comments 8/9/2021
 
@@ -54,21 +55,24 @@
 	\end{equation}
 	
 	\subsection{Gauging alcohol with TTB tables}
-	The Gruneisen parameter, $\gamma$, of a gas is a dimensionless quantity that relates volume changes of a gas to it's thermal properties. For an ideal gas, it can be shown that
+	Table 6 from the TTB correlates specific gravities of ethanol-water mixtures at 60$\degree$ F to proofs. In order to obtain proofs at other temperatures, one must convert the measured density ($\rho_{1}$) at a given temperature (T1) to the hypothetical density ($\rho_{2}$) that a glass hydrometer would indicate if calibrated at the standard 60$\degree F$ reference temperature:
+	
 	\begin{equation}
 		\label{deqn_ex3}
-		\gamma = \kappa - 1
+		\rho_{2} = \rho_{1} (1 + \alpha(T_{1} - 60\degree F))
 	\end{equation}
-	where $\kappa$ is the ratio of constant pressure and constant volume heat capacities, \( \frac{C_p}{C_v} \).
-	From the equipartition theroem, every degree of freedom, except vibrational degrees of freedom, in a molecule contributes \( \frac{NR}{2} \) to the molecule's heat capacity. Argon, a monotomic gas used in our experiment, has three translational degrees of freedom. CO2, on the other hand, has three translational degrees of freedom and two rotational degrees of freedom.
-	Kappa can also be related the pressure of the harmonic oscillator in the Rüchardt Experiment:
+	where $\alpha$ is the coefficient of thermal expansion for the hydrometer material (typically 25 $\cdot$ $\frac{10\textsuperscript{-6}}{\degree C}$ for glass).
+	At this corrected density, specific gravity can be calculated using the reference density of water at 60, $\degree C$ 0.99904 g/cc. Then, Table 6 can be interpolated through a truncated Taylor series expansion to retrieve an apparent proof, $C_{2}$, implemented as equation 1 in python:
+	 
 	\begin{equation}
 		\label{deqn_ex4}
-		\Delta P = C_e^{-kt/2}\cos(\omega t + \phi) \\
+		C_{2} = f(\gamma_{1},T1) = [f + (\gamma_{1}-\gamma_{R})\frac{\partial f}{\partial \gamma} ] 
 	\end{equation}
+	where $\gamma_{1}$ is the specific gravity of the sample corrected to 60$\degree F$
+	This apparent proof still has instrument and sample temperature effects, so it must be corrected to a true proof using TTB Table 1. The computed apparent proof $C_{2}$ is rounded down to the nearest integer and used as a reference for interpolation of Table 1.
 	\begin{equation}
 		\label{deqn_ex5}
-		\omega = \sqrt{\frac{\kappa P A^2 }{mV}-(\frac{k^2}{4})} \\
+		C_3 = C_2 + (C_2 - C_R) \frac{\partial f}{\partial C}\bigg|_{C_R, T_R} + (T_1 - T_R) \frac{\partial C}{\partial T}\bigg|_{C_R, T_R}
 	\end{equation}
 	where the gain/decay ratio, C [Pressure], the time constant, k [s-1], the angular frequency, $\omega$ [Rad/s], and the phase shift, $\phi$ [Rad], are nonlinear parameters determined experimentally through nonlinear curvefitting techniques. By rearranging to a form like : 
 	\begin{equation}
