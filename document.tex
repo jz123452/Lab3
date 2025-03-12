@@ -76,11 +76,6 @@
 	\end{equation}
 	where $C_{3}$ is the estimated true proof of the mixture corrected for temperature, $T_{1}$. $C_{R}$ and $T_{R}$ are reference proofs and temperatures from values corresponding to the rounded-down $C_{2}$ in Table 1.
 	
-	\begin{equation}
-		\label{deqn_ex5.5}
-		\kappa = \left(\omega^2 + \frac{k}{4}\right) \frac{m v}{P_0 A^2} \\
-	\end{equation}
-	
 	\subsection{Error Propagation}
 	\subsubsection{Pycnometer Masses}
 	 Uncertainty for each of the 10 mixtures in the pycnometer, the pure water in the pycnometer, and the empty pycnometer was calculated on a 95\% Confidence Interval (N=3). 
@@ -111,6 +106,34 @@
 		\gamma_{2} = A_{21}(\frac{A_{12}X_{1}}{A_{12}X_{1}+A_{21}X_{2}})^{2}
 	\end{equation}
 	where $A_{12}$ and $A_{21}$ are Van Laar parameters for water and ethanol respectively. $X_{1}$ is the mole fraction of ethanol in solution and $X_{2}$ is the mole fraction of water.
+	The Antoine Equation is used to determine saturation pressures of the pure components in the solutions and follows the form:
+	\begin{equation}
+		\label{deqn_ex5.5}
+		log_{10}P^{*} = A - \frac{B}{T+C}
+	\end{equation}
+	where $P^{*}$ is the saturation pressure of the component and A, B, and C are tabulated constants.
+	The VLE can then be modeled through the modified Raoult's Law:
+	\begin{equation}
+		\label{deqn_ex5.5}
+		\gamma_{1}xP^{etOH*} = yP
+	\end{equation}
+	\begin{equation}
+		\label{deqn_ex5.5}
+		\gamma_{2}(1-x)P^{H2O*} = (1-y)P
+	\end{equation}
+	A solver like SciPy optimize's root function can be used to solve for saturation temperatures at a given pressure and a $T_{xy}$ diagram can be constructed
+	\subsubsection{McCabe-Thiele diagram}
+	McCabe-Thiele analysis is based on the McCabe-Thiele assumption: that liquid is vaporized at the same rate vapor is condensed on a molar basis. With this assumption, two mole balances can be constructed: one for the operating (rectifying) line and one for the stripping line. These lines will be plotted against the $T_{xy}$ equilibrium curve described earlier. The operating line passes through the point ($x_{p},x_{p}$), where $x_{p}$ is the product ethanol mol fraction, and follows the equation:
+	\begin{equation}
+		\label{deqn_ex5.5}
+		y_{i} = \frac{O}{O+1}x_{i-1} + \frac{x_{p}}{O+1}
+	\end{equation}
+	Where O is the reflux ratio of the column. The stripping line passes through the point ($x_{w},x_{w}$), where $x_{w}$ is the waste ethanol mol fraction, and follows the equation:
+	\begin{equation}
+		\label{deqn_ex5.5}
+		y_{i} = \frac{O+F}{O+1}x_{i-1} + \frac{1-F}{O+1}x_{W}
+	\end{equation}
+	Where F is the total molar flux per mole product.
 	
 	
 	
