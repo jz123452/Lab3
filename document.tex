@@ -74,55 +74,45 @@
 		\label{deqn_ex5}
 		C_3 = C_2 + (C_2 - C_R) \frac{\partial f}{\partial C}\bigg|_{C_R, T_R} + (T_1 - T_R) \frac{\partial C}{\partial T}\bigg|_{C_R, T_R}
 	\end{equation}
-	where $C_{3}$ is the estimated true proof of the mixture corrected for temperature, $T_{1}$. $C_{R}$ and $T_{R}$ are reference proofs and temperatures from values corresponding to the rounded-down $C_{2}$
+	where $C_{3}$ is the estimated true proof of the mixture corrected for temperature, $T_{1}$. $C_{R}$ and $T_{R}$ are reference proofs and temperatures from values corresponding to the rounded-down $C_{2}$ in Table 1.
+	
 	\begin{equation}
 		\label{deqn_ex5.5}
 		\kappa = \left(\omega^2 + \frac{k}{4}\right) \frac{m v}{P_0 A^2} \\
 	\end{equation}
-	Kappa can be determined experimentally.
 	
 	\subsection{Error Propagation}
-	\subsubsection{Mass of weights added}
-	The 6 different masses added to the piston to perform the calibration and oscillations were taken as the average mass across three measurements. Uncertainty of the masses were computed through a 95\% confidence interval, with N = 3.
-	\subsubsection{Applied Pressures}
-	Uncertainty in pressures were calculated according to the master equation for error propagation (lec 1.2). The diameter of the piston was given, so the only uncertainties that arose were propagated from uncertainties in mass measurements. 
+	\subsubsection{Pycnometer Masses}
+	 Uncertainty for each of the 10 mixtures in the pycnometer, the pure water in the pycnometer, and the empty pycnometer was calculated on a 95\% Confidence Interval (N=3). 
+	\subsubsection{Pycnometer Densities}
+	Uncertainties for the mixture densities determined with the pycnometer propogates from uncertainties in mass measurements. The standard formula for error propagation was applied to equation (2)
 	\begin{equation}
 		\label{deqn_ex6}
-		F = m \cdot g
+		\delta d_{f} = \sqrt{
+			\begin{aligned}
+				&\left(\frac{\partial d_{f}}{\partial m_{f}}\delta m_{f}\right)^2 + 
+				\left(\frac{\partial d_{f}}{\partial m_{e}}\delta m_{e}\right)^2 \\
+				&+ \left(\frac{\partial d_{f}}{\partial m_{w}}\delta m_{w}\right)^2 + 
+				\left(\frac{\partial d_{f}}{\partial T}\delta T\right)^2
+			\end{aligned}
+		}
 	\end{equation}
+	where $\delta d_{f}$ is the uncertainty associated with the computed density, $\delta m_{f}$ is the uncertainty associated with the sample-filled pycnometer mass measurements, $\delta m_{e}$ is the uncertainty associated with the empty pycnometer mass measurements, and $\delta m_{w}$ is the uncertainty associated with the water-filled pycnometer mass measurements and the partial with respect to temperature is estimated with finite differences  
+	\subsection{Distillation}
+	\subsubsection{Vapor Liquid Equilibria}
+	The theoretical stages of our distillation column are assumed to be at vapor-liquid equilibrium (VLE). The VLE behavior of ethanol and water can be modeled using Antoine's equation for determining saturation pressures, and the Van Laar model for activity-coefficients.
+	First, the activity coefficients, $\gamma$, are calculated
+	\begin{equation}
+		\label{deqn_ex5.5}
+		\gamma_{1} = A_{12}(\frac{A_{21}X_{2}}{A_{12}X_{1}+A_{21}X_{2}})^{2}
+	\end{equation}
+	\begin{equation}
+		\label{deqn_ex5.5}
+		\gamma_{2} = A_{21}(\frac{A_{12}X_{1}}{A_{12}X_{1}+A_{21}X_{2}})^{2}
+	\end{equation}
+	where $A_{12}$ and $A_{21}$ are Van Laar parameters for water and ethanol respectively. $X_{1}$ is the mole fraction of ethanol in solution and $X_{2}$ is the mole fraction of water.
 	
-	\begin{equation}
-		\label{deqn_ex7}
-		P = \frac{F}{A} \Rightarrow \frac{4m \cdot g}{\pi \cdot D^2}
-	\end{equation}
-	\begin{equation}
-		\label{deqn_ex8}
-		\delta P = \sqrt{{\frac{\partial P}{{\partial}^2 m}}^2 \cdot {\delta m}^2}  
-	\end{equation}
-	\subsubsection{Calibration Curve}
-	The uncertainty in the slope of the calibration curve was determined through the following uncertainty propagation equations for a linear regression.
-	\begin{equation}
-		\label{eq:delta-n}
-		\Delta \equiv N \left[\left(\sum_{i=1}^N P_i^2\right) - \left(\sum_{i=1}^N P_i\right)^2\right]
-	\end{equation}
-	\begin{equation}
-		\label{eq:delta-y}
-		\delta\frac{mV}{9V} = \sqrt{\frac{1}{N-2}\sum_{i=1}^N (\frac{mV}{9V}_i - b - mP_i)^2}
-	\end{equation}
-	\begin{equation}
-		\label{eq:delta-m}
-		\delta m = \delta \frac{mV}{9V} \sqrt{\frac{N}{\Delta}}
-	\end{equation}
-	where $\delta$m is the uncertainty in the calibration curve, in dimensions comparable to PendoTec's specification sheet for this case.
-	\subsubsection{Kappa}
-	\begin{equation}
-		\label{deqn_ex10}
-		\kappa = \left(\omega^2 + \frac{k}{4}\right) \frac{m v}{P_0 A^2} \\
-	\end{equation}
-	\begin{equation}
-		\label{deqn_ex10}
-		\delta\kappa = \sqrt{\left(\frac{d\kappa}{dm}\right)^2 (\delta m)^2 + \left(\frac{d\kappa}{dA}\right)^2 (\delta A)^2}
-	\end{equation}
+	
 	
 	
 	\section{Experimental Methods}
@@ -143,6 +133,12 @@
 		\includegraphics[width=3.6in]{fig1}
 		\caption{Measured voltage readings from a PendoTec single-use pressure sensor recorded at various static pressures from a gas piston apparatus containing air. Static pressures were induced by adding weights of [84.248 $\pm$ 0.007g; 164.817 $\pm$ 0.007g; 239.434 $\pm$ 0.002g; 328.00 $\pm$ 0.01g and 402.531 $\pm$ 0.003g.] to the apparatus and appear in the figure from left to right. Error bars were calculated based on a 95\% confidence interval of recorded voltage readings in mV across three trials for each pressure (N=2). Uncertainty }
 		\label{fig_1}
+	\end{figure}
+	\begin{figure}[!t]
+		\centering
+		\includegraphics[width=3.6in]{fig2}
+		\caption{Measured voltage readings from a PendoTec single-use pressure sensor recorded at various static pressures from a gas piston apparatus containing air. Static pressures were induced by adding weights of [84.248 $\pm$ 0.007g; 164.817 $\pm$ 0.007g; 239.434 $\pm$ 0.002g; 328.00 $\pm$ 0.01g and 402.531 $\pm$ 0.003g.] to the apparatus and appear in the figure from left to right. Error bars were calculated based on a 95\% confidence interval of recorded voltage readings in mV across three trials for each pressure (N=2). Uncertainty }
+		\label{fig_2}
 	\end{figure}
 	\begin{table*}[!htbp]
 		\centering

@@ -199,29 +199,19 @@ for i in range(len(traytrueproofs)):
     
 ######### EQUATION 2
 ### 3.1 Data
-#densuncertanties = np.array([0.003607468,
-#0.005066667,
-#0.002031668,
-#0.00433757,
-#0.000405658,
-#0.000309826,
-#0.000309826,
-#0.00223419,
-#0.000309826,
-#0.006791996,
-#])
 
-#tempuncertainties = np.array([0.117103375,
-#0.117103375,
-#0.202828995,
-#0.202828995,
-#0.117103375,
-#0.117103375,
-#8.82543E-15,
-#0.309826407,
-#0.117103375,
-#0.202828995,
-#])
+
+tempuncertainties = np.array([0.117103375,
+0.117103375,
+0.202828995,
+0.202828995,
+0.117103375,
+0.117103375,
+8.82543E-15,
+0.309826407,
+0.117103375,
+0.202828995,
+])
 water_density_table = [
     {"temp_C":4, "density":0.99997},
     {"temp_C":15.56, "density":0.99904},  # 60°F base
@@ -269,6 +259,67 @@ def pycnopf(temp,m_e,m_w,m_f):
     return d_f
 for i in range(len(m_f)):
     pycnodens.append(pycnopf(pycnotemps[i],m_e,m_w,m_f[i]))
+### error propogation
+import numpy as np
+
+def propagate_error(m_f, m_e, m_w, d_m_f, d_m_e, d_m_w, T, delta_T):
+    """Propagate uncertainties from mass and temperature (fixed)."""
+    # Convert all inputs to numpy arrays
+    m_f = np.asarray(m_f)
+    m_e = np.asarray(m_e)
+    m_w = np.asarray(m_w)
+    T = np.asarray(T)
+    d_m_f = np.asarray(d_m_f)
+    d_m_e = np.asarray(d_m_e)
+    d_m_w = np.asarray(d_m_w)
+    
+    # Calculate water density and its temperature derivative
+    d_w = get_water_density(T)  # Assume get_water_density uses np.interp
+    
+    # Numerical derivative of d_w with respect to T
+    epsilon = 0.01
+    d_w_plus = get_water_density(T + epsilon)
+    d_w_minus = get_water_density(T - epsilon)
+    ddw_dT = (d_w_plus - d_w_minus) / (2 * epsilon)
+    
+    # Partial derivatives (ensure all terms are arrays)
+    denominator = m_w - m_e
+    df_dm_f = 1 / denominator
+    df_dm_e = -(m_f - m_e) / denominator**2
+    df_dm_w = -(m_f - m_e) / denominator**2
+    df_dd_w = (m_f - m_e) / denominator
+    
+    # Temperature uncertainty contribution (scalar * array → array)
+    delta_d_w = ddw_dT * np.asarray(delta_T)
+    
+    # Propagate uncertainties (all terms now arrays)
+    uncertainties = np.sqrt(
+        (df_dm_f * d_m_f)**2 +
+        (df_dm_e * d_m_e)**2 +
+        (df_dm_w * d_m_w)**2 +
+        (df_dd_w * delta_d_w)**2  # Array multiplication
+    )
+    
+    # Uncertainty of the mean density
+    return np.sqrt(np.sum(uncertainties**2)) / len(uncertainties)
+
+densuncs = []
+dm_f = [0.005366351,
+0.001171034,
+0.001171034,
+0.003098264,
+0,
+0.003513101,
+0.00405658,
+0.002342067,
+0.021465403,
+0.005366351
+]
+dm_e = 0.003098264
+dm_w = 1.77 * 10**(-14)
+
+for i in range(len(m_f)):
+    densuncs.append(propagate_error(m_f[i],m_e,m_w,dm_f,dm_e,dm_w,pycnotemps[i],tempuncertainties[i]))
     
 plt.figure('1')
 plt.plot(densities60,molefrs60,'o', markersize=2,label='60°F')
