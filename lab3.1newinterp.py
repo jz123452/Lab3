@@ -277,7 +277,7 @@ def propagate_error(m_f, m_e, m_w, d_m_f, d_m_e, d_m_w, T, delta_T):
     d_w = get_water_density(T)  # Assume get_water_density uses np.interp
     
     # Numerical derivative of d_w with respect to T
-    epsilon = 0.01
+    epsilon = 0.0001
     d_w_plus = get_water_density(T + epsilon)
     d_w_minus = get_water_density(T - epsilon)
     ddw_dT = (d_w_plus - d_w_minus) / (2 * epsilon)
