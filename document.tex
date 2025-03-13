@@ -13,6 +13,8 @@
 \usepackage{BookTabs}
 \usepackage{siunitx}
 \usepackage{gensymb}
+\usepackage{setspace}
+\doublespacing
 \hyphenation{op-tical net-works semi-conduc-tor IEEE-Xplore}
 % updated with editorial comments 8/9/2021
 
@@ -78,7 +80,7 @@
 	
 	\subsection{Error Propagation}
 	\subsubsection{Pycnometer Masses}
-	 Uncertainty for each of the 10 mixtures in the pycnometer, the pure water in the pycnometer, and the empty pycnometer was calculated on a 95\% Confidence Interval (N=3). 
+	 Uncertainty for each of the 10 mixtures in the pycnometer, the pure water in the pycnometer, and the empty pycnometer were calculated on a 95\% Confidence Interval (N=3). 
 	\subsubsection{Pycnometer Densities}
 	Uncertainties for the mixture densities determined with the pycnometer propogates from uncertainties in mass measurements. The standard formula for error propagation was applied to equation (2)
 	\begin{equation}
@@ -139,14 +141,19 @@
 	
 	
 	\section{Experimental Methods}
-	\subsection{Calibration}
-	The pressure sensor was calibrated using air as a fluid by taking multiple voltage measurements of static pressure with 6 combinations of weights (with one of them being the unweighted plunger) added to the piston. Voltage readouts were recorded for each weight. Voltage was then plotted over pressure, then the pressure sensor calibration was calculated in units of [mV/psi/9V] and compared to the manufacturer's stated value.
-	The data acquisition system (DAS) was configured and tested to ensure proper operation.
-	\subsection{Ruchardt Experiment}
-	The Ruchardt experiment was first conducted with air as the internal fluid across 4 different initial pressures. The piston height was set to 60mm every trial to ensure than the volume remained constant between trials, although our apparatus had considerable leakage. \\With the DAS running, oscillations were induced by pressing and abruptly releasing the piston.
-	Oscillations containing 5 peaks or more were considered acceptable. Three acceptable trials were recorded for every weight value.
-	
-	The experiment was then repeated, using Argon and CO2 instead of air. Before conducting the experiment, the air in the apparatus was purged twice with the respective gas. Three trials were conducted for each of the four weights tested, accepting oscillations with five peaks or more.
+	\subsection{Pycnometry}
+	\begin{figure}[!t]
+		\centering
+		\includegraphics[width=3.6in]{Drawing}
+		\caption{Measured voltage readings from a PendoTec single-use pressure sensor recorded at various static pressures from a gas piston apparatus containing air. Static pressures were induced by adding weights of [84.248 $\pm$ 0.007g; 164.817 $\pm$ 0.007g; 239.434 $\pm$ 0.002g; 328.00 $\pm$ 0.01g and 402.531 $\pm$ 0.003g.] to the apparatus and appear in the figure from left to right. Error bars were calculated based on a 95\% confidence interval of recorded voltage readings in mV across three trials for each pressure (N=2). Uncertainty }
+		\label{fig_2}
+	\end{figure}
+	\subsubsection{Pycnometer Calibration}
+	The pycnometer was rinsed thoroughly with ethanol and dried with compressed air. The mass of the empty (stopped and capped) pycnometer was weighed 3 times with an analytical balance and recorded as $M_{e}$. 
+	The pycnometer was emptied, cleaned following the above procedure, and filled with deionized water (DIW). The mass of the water-filled pycnometer was weighed 3 times with an analytical balance and recorded as $M_{w}$ Then, 3 readings of density and temperature were taken with the densitometer and recorded as $\rho_{w}$
+	\subsubsection{Pycnometer Sample Measurements}
+	The pycnometer was emptied, rinsed thoroughly with ethanol and dried with compressed air. 10 ethanol-water mixtures ranging from pure ethanol to pure water were constructed. Various weights of ethanol and water were measured over 3 trials then combined in a beaker to form the samples we measured, cleaning the beaker and pycnometer before switching concentrations. The mass of the empty (stopped and capped) pycnometer was weighed 3 times with an analytical balance and recorded as $M_{e}$ Then, 3 readings of density and temperature were taken at every concentration with the densitometer and recorded as $\rho_{d_N}$.
+	\subsection{Continuous Distillation}
 	\section{Results}
 	\subsection{Calibration}
 	The calibration value was determined from the slope of the linear regression of recorded voltages, in mV, against varied pressures, in psi. This value was divided by 9V to match PendoTec specifications  to be 0.270756 $\pm$ 0.0000001 $\frac{mV}{psi\cdot9V}$. This value was used to determine the pressure in the apparatus from voltage readings in the following Ruchardt experiments
