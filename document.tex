@@ -272,111 +272,113 @@
 	
 	
 	\section{Discussion}
-	Note that, for IEEE-style tables, the
-	$\backslash${\tt{caption}} command should come BEFORE the table. Table captions use title case. Articles (a, an, the), coordinating conjunctions (and, but, for, or, nor), and most short prepositions are lowercase unless they are the first or last word. Table text will default to $\backslash${\tt{footnotesize}} as
-	the IEEE normally uses this smaller font for tables.
-	The $\backslash${\tt{label}} must come after $\backslash${\tt{caption}} as always.
+\subsection{Temperature effect on density measurements}
+\subsubsection{Temperature effects on Pycnometer readings and density}
+As a fluid's temperature increases, it's volume increases due to thermal expansion. This changes the amount of mass that can fit in the pycnometer, but can be corrected for. We accounted for this by using the thermal expansion coefficient of the pycnometer material (glass) at a reference temperature of 60$\degree$F. This was incorporated into the true\_proof and pycnometer working equations in python. We accounted for the thermal expansion of the ethanol-water mixture by interpolation of TTB tables 1 and 6 for gauging alcohol, but a similar equation for thermal expansion could be used:
+\begin{equation}
+	\label{deqn_ex5.5}
+	V_{T} = V_{o}[1+\alpha(T-T{o})]
+\end{equation}
+\subsection
+where $V_{T}$ is the volume of the fluid at temperature T, $V_{o}$ is the volume of the fluid at reference temperature $T_{o}$, and $\alpha$ is the coefficient of thermal expansion of the fluid
+\subsubsection{Effect of temperature on mole fraction in ethanol-water mixtures}
+Temperature has an effect on density so in calculating mole fraction from TTB tables which use specific gravity at a reference temperature, we must ensure we correct to the same reference temperature for accurate calculation. 
+\subsection{Steady State Operation in Distillation Columns}
+Steady state operation in a column was determined by verifying that the mass balance of the column reduces to $Mass_{in} = Mass_{out}$, as determined by weights of the waste and product streams and feedrate. Due to operational fluctuations, a 10\% range was considered acceptable.
+\subsubsection{Mass balance error}
+Fluctuations in the reboiler power could effect the mass balance by changing the column temperature and VLE behavior of the ethanol-water mixture, and were likely a large source of random error. This can be noted in the column data, where there were apparent deviations in the reboiler data. If one collects a sample for too short a duration of time, they could not capture a full reflux cycle (35s for reflux ratio of 4, 42s for reflux ratio of 5) and product/waste flowrates will be effected. This is a form of systemic error. In both cases, error can be minimized by collecting samples for an appropriate duration of time (1-5min)
+\subsubsection{Variations of operational parameters on steady state}
+Sudden variations in flowrate can change the composition of the product and waste compositions, as the mass balance of the system will be altered. The temperature profile of the trays would also be affected as the energy balance of the column is altered. Sudden variations in reboiler power will also alter the energy balance of the column and affect the temperature profiles of the trays. It will also lead to increased vapor generation which will affect the mass balance of the system.
+Sudden variations in the reflux ratio will alter product and waste flowrates, altering the mass balance because different amounts of product will be returned to the column while the feed remains constant.
+\subsection{Distillation Column Performance Analysis}
+\subsubsection{McCabe-Thiele Analysis}
+The McCabe-Thiele method of modeling distillation assumes that the distillation column operates at a constant pressure (isobaric), and with constant molal overflow. Constant molal overflow means that the number of moles of mixture vaporizing is equal to the moles of mixture condensing. The theoretical trays are typically significantly higher(as they were in our case) as they assume 100\% tray efficiency, with full seperation according to VLE data, but, in practice, efficiency is less than 100\% due to flooding, entrainment or incomplete mixing.
+\subsubsection{Theoretical and Experimental VLE Data Comparison}
+Differences between Theoretical and Experimental VLE data differ and depend on the model used for the theoretical VLE relationship; the interaction of components in binary mixtures varies widely depending on the substance and there are many equations of state suitable for different types of components. Water and ethanol notoriously form an azeotrope and model results can vary. This could potentially affect the theoretical tray calculation as determined by the McCabe-Thiele diagram.
+
+Thermodynamic parameters like activity coefficients, fugacity and equilibrium constants are used to describe the behaviors of mixtures and components in them. Theoretical VLE models like Val-Laar, NRTL, and Wilson use published values from experimental data to model solution behavior.
+\section{Technical Advances}
+
+
+
+
+
+\section{References Section}
+You can use a bibliography generated by BibTeX as a .bbl file.
+BibTeX documentation can be easily obtained at:
+http://mirror.ctan.org/biblio/bibtex/contrib/doc/
+The IEEEtran BibTeX style support page is:
+http://www.michaelshell.org/tex/ieeetran/bibtex/
+
+% argument is your BibTeX string definitions and bibliography database(s)
+%\bibliography{IEEEabrv,../bib/paper}
+%
+\section{Simple References}
+You can manually copy in the resultant .bbl file and set second argument of $\backslash${\tt{begin}} to the number of references
+(used to reserve space for the reference number labels box).
+
+\begin{thebibliography}{1}
+	\bibliographystyle{IEEEtran}
 	
+	\bibitem{ref1}
+	{\it{Mathematics Into Type}}. American Mathematical Society. [Online]. Available: https://www.ams.org/arc/styleguide/mit-2.pdf
 	
-	\begin{table*}[!htbp]
-		\centering
-		\caption{$\kappa$ Values for Air, Argon, and CO$_2$}
-		\label{tab:kappa_values}
-		\begin{tabular}{lcccc}
-			\toprule
-			Gas & $\kappa_\text{Empty}$ & $\kappa_\text{1 Weight}$ & $\kappa_\text{2 Weight}$ & $\kappa_\text{3 Weight}$ \\ 
-			\midrule
-			Air & $1.37 \pm 4 \times 10^{-21}$ & $0.95 \pm 3 \times 10^{-21}$ & $1.10 \pm 3 \times 10^{-21}$ & $1.20 \pm 3 \times 10^{-21}$ \\
-			Argon & $1.74 \pm 3 \times 10^{-21}$ & $1.61 \pm 4 \times 10^{-21}$ & $1.53 \pm 2 \times 10^{-21}$ & $1.64 \pm 3 \times 10^{-21}$ \\
-			CO$_2$ & $1.28 \pm 1 \times 10^{-21}$ & $1.36 \pm 4 \times 10^{-21}$ & $1.32 \pm 2 \times 10^{-21}$ & $1.28 \pm 2 \times 10^{-21}$ \\
-			\bottomrule
-		\end{tabular}
-	\end{table*}
+	\bibitem{ref2}
+	T. W. Chaundy, P. R. Barrett and C. Batey, {\it{The Printing of Mathematics}}. London, U.K., Oxford Univ. Press, 1954.
 	
-	\section{Technical Advances}
+	\bibitem{ref3}
+	F. Mittelbach and M. Goossens, {\it{The \LaTeX Companion}}, 2nd ed. Boston, MA, USA: Pearson, 2004.
 	
+	\bibitem{ref4}
+	G. Gr\"atzer, {\it{More Math Into LaTeX}}, New York, NY, USA: Springer, 2007.
 	
+	\bibitem{ref5}M. Letourneau and J. W. Sharp, {\it{AMS-StyleGuide-online.pdf,}} American Mathematical Society, Providence, RI, USA, [Online]. Available: http://www.ams.org/arc/styleguide/index.html
 	
+	\bibitem{ref6}
+	H. Sira-Ramirez, ``On the sliding mode control of nonlinear systems,'' \textit{Syst. Control Lett.}, vol. 19, pp. 303--312, 1992.
 	
+	\bibitem{ref7}
+	A. Levant, ``Exact differentiation of signals with unbounded higher derivatives,''  in \textit{Proc. 45th IEEE Conf. Decis.
+		Control}, San Diego, CA, USA, 2006, pp. 5585--5590. DOI: 10.1109/CDC.2006.377165.
 	
-	\section{References Section}
-	You can use a bibliography generated by BibTeX as a .bbl file.
-	BibTeX documentation can be easily obtained at:
-	http://mirror.ctan.org/biblio/bibtex/contrib/doc/
-	The IEEEtran BibTeX style support page is:
-	http://www.michaelshell.org/tex/ieeetran/bibtex/
+	\bibitem{ref8}
+	M. Fliess, C. Join, and H. Sira-Ramirez, ``Non-linear estimation is easy,'' \textit{Int. J. Model., Ident. Control}, vol. 4, no. 1, pp. 12--27, 2008.
 	
-	% argument is your BibTeX string definitions and bibliography database(s)
-	%\bibliography{IEEEabrv,../bib/paper}
-	%
-	\section{Simple References}
-	You can manually copy in the resultant .bbl file and set second argument of $\backslash${\tt{begin}} to the number of references
-	(used to reserve space for the reference number labels box).
+	\bibitem{ref9}
+	R. Ortega, A. Astolfi, G. Bastin, and H. Rodriguez, ``Stabilization of food-chain systems using a port-controlled Hamiltonian description,'' in \textit{Proc. Amer. Control Conf.}, Chicago, IL, USA,
+	2000, pp. 2245--2249.
 	
-	\begin{thebibliography}{1}
-		\bibliographystyle{IEEEtran}
-		
-		\bibitem{ref1}
-		{\it{Mathematics Into Type}}. American Mathematical Society. [Online]. Available: https://www.ams.org/arc/styleguide/mit-2.pdf
-		
-		\bibitem{ref2}
-		T. W. Chaundy, P. R. Barrett and C. Batey, {\it{The Printing of Mathematics}}. London, U.K., Oxford Univ. Press, 1954.
-		
-		\bibitem{ref3}
-		F. Mittelbach and M. Goossens, {\it{The \LaTeX Companion}}, 2nd ed. Boston, MA, USA: Pearson, 2004.
-		
-		\bibitem{ref4}
-		G. Gr\"atzer, {\it{More Math Into LaTeX}}, New York, NY, USA: Springer, 2007.
-		
-		\bibitem{ref5}M. Letourneau and J. W. Sharp, {\it{AMS-StyleGuide-online.pdf,}} American Mathematical Society, Providence, RI, USA, [Online]. Available: http://www.ams.org/arc/styleguide/index.html
-		
-		\bibitem{ref6}
-		H. Sira-Ramirez, ``On the sliding mode control of nonlinear systems,'' \textit{Syst. Control Lett.}, vol. 19, pp. 303--312, 1992.
-		
-		\bibitem{ref7}
-		A. Levant, ``Exact differentiation of signals with unbounded higher derivatives,''  in \textit{Proc. 45th IEEE Conf. Decis.
-			Control}, San Diego, CA, USA, 2006, pp. 5585--5590. DOI: 10.1109/CDC.2006.377165.
-		
-		\bibitem{ref8}
-		M. Fliess, C. Join, and H. Sira-Ramirez, ``Non-linear estimation is easy,'' \textit{Int. J. Model., Ident. Control}, vol. 4, no. 1, pp. 12--27, 2008.
-		
-		\bibitem{ref9}
-		R. Ortega, A. Astolfi, G. Bastin, and H. Rodriguez, ``Stabilization of food-chain systems using a port-controlled Hamiltonian description,'' in \textit{Proc. Amer. Control Conf.}, Chicago, IL, USA,
-		2000, pp. 2245--2249.
-		
-	\end{thebibliography}
-	
-	
-	\newpage
-	
-	\section{Biography Section}
-	If you have an EPS/PDF photo (graphicx package needed), extra braces are
-	needed around the contents of the optional argument to biography to prevent
-	the LaTeX parser from getting confused when it sees the complicated
-	$\backslash${\tt{includegraphics}} command within an optional argument. (You can create
-	your own custom macro containing the $\backslash${\tt{includegraphics}} command to make things
-	simpler here.)
-	
-	\vspace{11pt}
-	
-	\bf{If you include a photo:}\vspace{-33pt}
-	\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{fig1}}]{Michael Shell}
-		Use $\backslash${\tt{begin\{IEEEbiography\}}} and then for the 1st argument use $\backslash${\tt{includegraphics}} to declare and link the author photo.
-		Use the author name as the 3rd argument followed by the biography text.
-	\end{IEEEbiography}
-	
-	\vspace{11pt}
-	
-	\bf{If you will not include a photo:}\vspace{-33pt}
-	\begin{IEEEbiographynophoto}{John Doe}
-		Use $\backslash${\tt{begin\{IEEEbiographynophoto\}}} and the author name as the argument followed by the biography text.
-	\end{IEEEbiographynophoto}
-	
-	
-	
-	
-	\vfill
-	
+\end{thebibliography}
+
+
+\newpage
+
+\section{Biography Section}
+If you have an EPS/PDF photo (graphicx package needed), extra braces are
+needed around the contents of the optional argument to biography to prevent
+the LaTeX parser from getting confused when it sees the complicated
+$\backslash${\tt{includegraphics}} command within an optional argument. (You can create
+your own custom macro containing the $\backslash${\tt{includegraphics}} command to make things
+simpler here.)
+
+\vspace{11pt}
+
+\bf{If you include a photo:}\vspace{-33pt}
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{fig1}}]{Michael Shell}
+	Use $\backslash${\tt{begin\{IEEEbiography\}}} and then for the 1st argument use $\backslash${\tt{includegraphics}} to declare and link the author photo.
+	Use the author name as the 3rd argument followed by the biography text.
+\end{IEEEbiography}
+
+\vspace{11pt}
+
+\bf{If you will not include a photo:}\vspace{-33pt}
+\begin{IEEEbiographynophoto}{John Doe}
+	Use $\backslash${\tt{begin\{IEEEbiographynophoto\}}} and the author name as the argument followed by the biography text.
+\end{IEEEbiographynophoto}
+
+
+
+
+\vfill
+
 \end{document}
-
-
