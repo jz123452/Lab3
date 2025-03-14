@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.2.11)  13 MAR 2025 21:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.2.11)  13 MAR 2025 21:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -449,6 +449,21 @@ LaTeX Warning: Label `deqn_ex5.5' multiply defined.
 LaTeX Warning: Label `deqn_ex5.5' multiply defined.
 
 
+LaTeX Warning: Label `deqn_ex5.5' multiply defined.
+
+
+LaTeX Warning: Label `deqn_ex5.5' multiply defined.
+
+
+LaTeX Warning: Label `deqn_ex5.5' multiply defined.
+
+
+LaTeX Warning: Label `deqn_ex5.5' multiply defined.
+
+
+LaTeX Warning: Label `deqn_ex5.5' multiply defined.
+
+
 LaTeX Warning: Label `fig_2' multiply defined.
 
 )
@@ -564,104 +579,104 @@ Underfull \vbox (badness 1199) has occurred while \output is active []
 
 
 ] [2]
-<Drawing.png, id=19, 478.78876pt x 357.58594pt>
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [3]
+<Drawing.png, id=23, 478.78876pt x 357.58594pt>
 File: Drawing.png Graphic file (type png)
 <use Drawing.png>
-Package pdftex.def Info: Drawing.png  used on input line 163.
+Package pdftex.def Info: Drawing.png  used on input line 187.
 (pdftex.def)             Requested size: 260.17244pt x 194.31027pt.
 
-Overfull \hbox (8.17244pt too wide) in paragraph at lines 163--164
+Overfull \hbox (8.17244pt too wide) in paragraph at lines 187--188
  [][] 
  []
 
-[3]
-<fig1.png, id=25, 386.94562pt x 266.9975pt>
+[4 <./Drawing.png>]
+<fig1.png, id=29, 386.94562pt x 266.9975pt>
 File: fig1.png Graphic file (type png)
 <use fig1.png>
-Package pdftex.def Info: fig1.png  used on input line 179.
+Package pdftex.def Info: fig1.png  used on input line 204.
 (pdftex.def)             Requested size: 260.17244pt x 179.52293pt.
 
-Overfull \hbox (8.17244pt too wide) in paragraph at lines 179--180
+Overfull \hbox (8.17244pt too wide) in paragraph at lines 204--205
  [][] 
  []
 
-<fig2.png, id=26, 389.95688pt x 266.9975pt>
+<fig2.png, id=30, 389.95688pt x 266.9975pt>
 File: fig2.png Graphic file (type png)
 <use fig2.png>
-Package pdftex.def Info: fig2.png  used on input line 185.
+Package pdftex.def Info: fig2.png  used on input line 210.
 (pdftex.def)             Requested size: 260.17244pt x 178.14183pt.
 
-Overfull \hbox (8.17244pt too wide) in paragraph at lines 185--186
+Overfull \hbox (8.17244pt too wide) in paragraph at lines 210--211
  [][] 
  []
 
 File: fig2.png Graphic file (type png)
 <use fig2.png>
-Package pdftex.def Info: fig2.png  used on input line 233.
+Package pdftex.def Info: fig2.png  used on input line 258.
 (pdftex.def)             Requested size: 361.34999pt x 247.42102pt.
 LaTeX Font Info:    Trying to load font information for OT1+phv on input line 2
-33.
+58.
 (C:\Users\i5fou\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1phv.fd
 File: ot1phv.fd 2020/03/25 scalable font definitions for OT1/phv.
 )
 LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 2
-39.
+64.
 
 (C:\Users\i5fou\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
-[4 <./Drawing.png> <./fig1.png>]
-Underfull \hbox (badness 4832) in paragraph at lines 278--283
+[5 <./fig1.png> <./fig2.png>]
+Underfull \hbox (badness 4832) in paragraph at lines 303--308
 []\OT1/ptm/m/n/10 You can use a bib-li-og-ra-phy gen-er-ated by Bib-TeX
  []
 
 
-Underfull \hbox (badness 4608) in paragraph at lines 278--283
+Underfull \hbox (badness 4608) in paragraph at lines 303--308
 \OT1/ptm/m/n/10 as a .bbl file. Bib-TeX doc-u-men-ta-tion can be eas-ily
  []
 
 
-Underfull \hbox (badness 6380) in paragraph at lines 278--283
+Underfull \hbox (badness 6380) in paragraph at lines 303--308
 \OT1/ptm/m/n/10 ob-tained at: http://mirror.ctan.org/biblio/bibtex/contrib/doc/
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 278--283
+Underfull \hbox (badness 10000) in paragraph at lines 303--308
 \OT1/ptm/m/n/10 The IEEE-tran Bib-TeX style sup-port page is:
  []
 
-
-Underfull \vbox (badness 1112) has occurred while \output is active []
-
- [5 <./fig2.png>]
+[6]
 File: fig1.png Graphic file (type png)
 <use fig1.png>
-Package pdftex.def Info: fig1.png  used on input line 338.
+Package pdftex.def Info: fig1.png  used on input line 363.
 (pdftex.def)             Requested size: 72.2687pt x 49.86635pt.
 File: fig1.png Graphic file (type png)
 <use fig1.png>
-Package pdftex.def Info: fig1.png  used on input line 338.
+Package pdftex.def Info: fig1.png  used on input line 363.
 (pdftex.def)             Requested size: 72.2687pt x 49.86635pt.
 LaTeX Font Info:    Trying to load font information for OMS+pcr on input line 3
-39.
+64.
  (C:\Users\i5fou\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omspcr.fd
 File: omspcr.fd 
 )
 LaTeX Font Info:    Font shape `OMS/pcr/m/n' in size <8> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 339.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 364.
 
-Underfull \hbox (badness 10000) in paragraph at lines 338--341
+Underfull \hbox (badness 10000) in paragraph at lines 363--366
 \OT1/ptm/m/n/8 and then for the 1st ar-gu-ment use
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 338--341
+Underfull \hbox (badness 10000) in paragraph at lines 363--366
 \OMS/cmsy/m/n/8 n$\OT1/pcr/m/n/8 includegraphics \OT1/ptm/m/n/8 to de-clare and
  link
  []
 
-[6] (document.aux)
+[7] (document.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
@@ -698,9 +713,9 @@ times/utmb8a.pfb><C:/Users/i5fou/AppData/Local/Programs/MiKTeX/fonts/type1/urw/
 times/utmbi8a.pfb><C:/Users/i5fou/AppData/Local/Programs/MiKTeX/fonts/type1/urw
 /times/utmr8a.pfb><C:/Users/i5fou/AppData/Local/Programs/MiKTeX/fonts/type1/urw
 /times/utmri8a.pfb>
-Output written on document.pdf (6 pages, 300931 bytes).
+Output written on document.pdf (7 pages, 305068 bytes).
 PDF statistics:
- 117 PDF objects out of 1000 (max. 8388607)
+ 122 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  28 words of extra memory for PDF output out of 10000 (max. 10000000)
 

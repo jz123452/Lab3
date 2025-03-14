@@ -145,7 +145,7 @@
 	Straight lines can then be traced from the product composition, horizontally to the bubble point, then vertically until reaching the rectifying line, then repeated until reaching the bubble point of the stripping section. Then, the vertical lines will be drawn until the stripping line, in a similar fashion. Once a horizontal line passes the waste stream composition, stop.
 	
 	
-	The overall  column effeciency can then be calculated by
+	The overall column efficiency can then be calculated by
 	\begin{equation}
 		\label{deqn_ex5.5}
 		E_{Column} = \frac{N_{theoretical}}{9}
@@ -154,7 +154,31 @@
 	
 	Theoretical compositions of trays can be computed by solving for mole fraction values with our VLE data given steady state tray temperatures.
 	\subsubsection{Economic Analysis of Distillation}
-	We can de
+	We can determine the economic efficiency of our batch distillation by comparing the commercial prices per kilogram of ethanol to our cost per kilogram determined by heater and condenser power draw and distillation time.
+	The power of the condenser can be calculated by
+	\begin{equation}
+		\label{deqn_ex5.5}
+		P [Watts] = I[Amps]V[Volts]
+	\end{equation}
+	Where V is the voltage of the condenser, measured by a meter at the power outlet, and I is 25A, for the Armfield UOP3BM-B.
+	The total energy expended can be calculated as
+	\begin{equation}
+		\label{deqn_ex5.5}
+		E {tot} = (P_{condenser} + P_{heater})t
+	\end{equation}
+	where t is the time of the distillation, in hours.
+	
+	According to the CA Public Utility Commission's Electric Rate Comparison tool, the average price per kilowatt-hour is 42 cents. Using this, the cost of our distillation can be computed.
+	\begin{equation}
+		\label{deqn_ex5.5}
+		Cost= \frac{\$0.42}{kWh}E {tot} 
+	\end{equation}
+	The total mass of ethanol in the reflux stream can be determined by determining the proof (and thus ABV) of the product with our equations from the pycnometry experiment to get the volume of pure ethanol in the product stream, then multiplying by the density of pure ethanol.
+	\begin{equation}
+		\label{deqn_ex5.5}
+		m_{Ethanol}= \rho_{ethanol}V_{product}ABV
+	\end{equation}
+	The energy cost per kilogram can then be computed
 	
 	\section{Experimental Methods}
 	\subsection{Pycnometry}
@@ -170,7 +194,8 @@
 	\subsubsection{Pycnometer Sample Measurements}
 	The pycnometer was emptied, rinsed thoroughly with ethanol and dried with compressed air. 10 ethanol-water mixtures ranging from pure ethanol to pure water were constructed. Various weights of ethanol and water were measured over 3 trials then combined in a beaker to form the samples we measured, cleaning the beaker and pycnometer before switching concentrations. The mass of the empty (stopped and capped) pycnometer was weighed 3 times with an analytical balance and recorded as $M_{e}$ Then, 3 readings of density and temperature were taken at every concentration with the densitometer and recorded as $\rho_{d_N}$.
 	\subsection{Continuous Distillation}
-	The distillation system used in this lab was the Armfield UOP3. Figure 1 is a schematic for the experimental setup. The reboiler power was set to 0.75kW, and the feed pump dial read '5.2', which can be corrected to a mL/s flowrate through a calibration equation. The column was initially ran in open reflux to reach steady state without producing waste streams. Steady-state operation was verified by performing a mass balance on the system and ensuring closure within 10\%.  Then, the reflux ratio was swapped to 4 (product flows to the top product receiver for 7 seconds, and back to the column for 28 seconds). 
+	The distillation system used in this lab was the Armfield UOP3. Figure 1 is a schematic for the experimental setup. The reboiler power was set to 0.75kW, and the feed pump dial read '5.2', which can be corrected to a mL/s flowrate through a calibration equation. The column was initially ran in open reflux to reach operating temperature quickly without producing waste. Then, the reflux ratio was swapped to 4 (product flows to the top product receiver for 7 seconds, and back to the column for 28 seconds).  Waste and product was then drained from the top and bottom receivers in three, 1 minute trials. Three measurements were taken of the waste and product density with a densitometer, and weighed on an analytical balance. The weights of  waste and product streams were used to determine steady-state operation through mass balance closure. At steady state, samples were drawn from plates 2,4,6 and 8, and the densities were measured three times. At steady state, the condenser voltage draw was noted to be 117.9V.
+	This procedure was repeated the following week at a reflux ratio of 5 (product flows to the top product receiver for 7 seconds, and back to the column for 35 seconds) At steady state, the condenser voltage draw was noted to be 118.5V.
 	\section{Results}
 	
 	
