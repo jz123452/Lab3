@@ -137,8 +137,12 @@ feden = np.mean([0.977,0.9786,0.9786])
 fetemp = np.mean([26.1,24.3,24.4])
 densities = [etden,waden,feden]
 temps = [ettemp,watemp,fetemp]
+##reflux 5
 traydens = [np.mean([0.8288,0.8312,0.8301]),np.mean([0.8716,0.8700,0.8688]),np.mean([0.9562,0.9560,0.9557]),np.mean([0.9683,0.9667,0.9681])]
 traytemps =[np.mean([25.1,23.7,23.9]),np.mean([21.9,22.4,22.0]),np.mean([24.0,23.9,24.3]),np.mean([21.2,21.1,21.3]),np.mean([26.1,24.3,24.4])]
+#reflux4
+r4traydens = [np.mean([0.8375,0.8372,0.8326]), np.mean([0.8751,0.8717,0.8715]) ,np.mean([0.9565,0.9564,0.9561]) ,np.mean([0.9623,0.9639,0.9628]) ]
+r4traytemps = [np.mean([20.1,20.7,22.8]),np.mean([21.5,21.8,21.9]),np.mean([21.4,20.1,20.5]),np.mean([19.8,19.6,20.2])]
 ###THEORETICAL DATA
 
 densities20 = np.linspace(0.7894,0.99819,100) ## 20C
@@ -155,6 +159,7 @@ proofs60 = []
 proofs25 = []
 proofs20 = []
 trayproofs = []
+r4trayproofs = []
 for i in range(len(densities)):
     proofs.append(interpolate6(densities[i],temps[i]))
 for i in range(len(densities60)):
@@ -163,17 +168,20 @@ for i in range(len(densities60)):
     proofs20.append(interpolate6(densities20[i],temps20[i]))
 for i in range(len(traydens)):
     trayproofs.append(interpolate6(traydens[i],traytemps[i]))
+    r4trayproofs.append(interpolate6(r4traydens[i],r4traytemps[i]))
 proofs = sorted(np.array(proofs,dtype=float), reverse=True)##remove sorted for experimental data
 proofs60 = sorted(np.array(proofs60,dtype=float), reverse=True)
 proofs25 = sorted(np.array(proofs25,dtype=float), reverse=True)
 proofs20 = sorted(np.array(proofs20,dtype=float), reverse=True)
 trayproofs = sorted(np.array(trayproofs,dtype=float), reverse=True)
+r4trayproofs = sorted(np.array(r4trayproofs,dtype=float), reverse=True)
 
 trueproofs = []
 trueproofs60 = []
 trueproofs25 = []
 trueproofs20 = []
 traytrueproofs = []
+r4traytrueproofs = []
 for i in range(len(proofs)):
     trueproofs.append(trueproof(proofs[i], temps[i]))
     
@@ -183,11 +191,13 @@ for i in range(len(proofs25)):
     trueproofs20.append(trueproof(proofs20[i], temps20[i]))
 for i in range(len(trayproofs)):
     traytrueproofs.append(trueproof(trayproofs[i], traytemps[i]))
+    r4traytrueproofs.append(trueproof(r4trayproofs[i], r4traytemps[i]))
 molefrs = []
 molefrs60 = []
 molefrs25 = []
 molefrs20 = []
 traymolefrs = []
+r4traymolefrs = []
 for i in range(len(trueproofs)):
     molefrs.append(molefractions(trueproofs[i]))
 for i in range(len(trueproofs25)):
@@ -196,6 +206,7 @@ for i in range(len(trueproofs25)):
     molefrs20.append(molefractions(trueproofs20[i]))
 for i in range(len(traytrueproofs)):
     traymolefrs.append(molefractions(traytrueproofs[i]))
+    r4traymolefrs.append(molefractions(r4traytrueproofs[i]))
     
 ######### EQUATION 2
 ### 3.1 Data
