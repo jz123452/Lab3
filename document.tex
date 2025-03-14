@@ -136,9 +136,25 @@
 		y_{i} = \frac{O+F}{O+1}x_{i-1} + \frac{1-F}{O+1}x_{W}
 	\end{equation}
 	Where F is the total molar flux per mole product.
+	A feed line, often called 'q' or 'feed quality' line can then be drawn, intersecting at the feed composition on the X=Y line, with a slope determined by the enthalpy of the feed stream. 
+	\begin{equation}
+		\label{deqn_ex5.5}
+		q = \frac{H_{F} - H_{L}}{H_{V} - H_{L}}
+	\end{equation}
+	where $H_{F}$ is the enthalpy of the feed stream at feed conditions, $H_{L}$ is the enthalpy of the feed stream at saturated liquid conditions, and $H_{V}$ is the enthalpy of the feed stream at saturated vapor conditions. We assume that the feed stream is entirely saturated liquid at steady state and thus q = 1.
+	Straight lines can then be traced from the product composition, horizontally to the bubble point, then vertically until reaching the rectifying line, then repeated until reaching the bubble point of the stripping section. Then, the vertical lines will be drawn until the stripping line, in a similar fashion. Once a horizontal line passes the waste stream composition, stop.
 	
 	
+	The overall  column effeciency can then be calculated by
+	\begin{equation}
+		\label{deqn_ex5.5}
+		E_{Column} = \frac{N_{theoretical}}{9}
+	\end{equation}
+	Where 9 comes from the 8 trays of the column, plus the reboiler stage.
 	
+	Theoretical compositions of trays can be computed by solving for mole fraction values with our VLE data given steady state tray temperatures.
+	\subsubsection{Economic Analysis of Distillation}
+	We can de
 	
 	\section{Experimental Methods}
 	\subsection{Pycnometry}
@@ -170,29 +186,45 @@
 		\caption{Measured voltage readings from a PendoTec single-use pressure sensor recorded at various static pressures from a gas piston apparatus containing air. Static pressures were induced by adding weights of [84.248 $\pm$ 0.007g; 164.817 $\pm$ 0.007g; 239.434 $\pm$ 0.002g; 328.00 $\pm$ 0.01g and 402.531 $\pm$ 0.003g.] to the apparatus and appear in the figure from left to right. Error bars were calculated based on a 95\% confidence interval of recorded voltage readings in mV across three trials for each pressure (N=2). Uncertainty }
 		\label{fig_2}
 	\end{figure}
-	\begin{table*}[!htbp]
+	% Reflux 4
+	
+	
+		
+	\begin{table}[htbp]
 		\centering
-		\caption{Gas Properties}
-		\label{tab:gas_properties}
-		\begin{tabular}{lcccccc}
+		\caption{Theoretical vs. Experimental Mole Fractions at Reflux 4}
+		\label{tab:reflux4}
+		\begin{tabular}{ccc}
 			\toprule
-			Gas & Condition & $P_0$ (Pa) & $C$ (Pa) & $\kappa$ (s$^{-1}$) & $\omega$ (rad s$^{-1}$) & $\phi$ (rad) \\
+			\textbf{Tray} & \textbf{Theoretical} & \textbf{Experimental} \\
 			\midrule
-			Air & Empty & $102171.80 \pm 7.20$ & $4518.24 \pm 886.00$ & $37.53 \pm 2.97$ & $217.85 \pm 2.87$ & $-9.62 \pm 3.02$ \\
-			& 1 Weight & $103076.35 \pm 2.59$ & $2061.26 \pm 545.07$ & $14.59 \pm 1.03$ & $118.06 \pm 0.64$ & $-10.88 \pm 7.99$ \\
-			& 2 Weight & $103389.06 \pm 1.81$ & $4264.83 \pm 513.42$ & $10.45 \pm 0.76$ & $90.98 \pm 0.63$ & $-8.53 \pm 6.94$ \\
-			& 3 Weight & $104821.81 \pm 12.52$ & $-1212.16 \pm 513.84$ & $10.03 \pm 0.56$ & $79.06 \pm 0.73$ & $-15.93 \pm 9.20$ \\
-			Argon & Empty & $102269.40 \pm 4.39$ & $-1487.97 \pm 3403.32$ & $16.59 \pm 4.37$ & $207.72 \pm 0.38$ & $-12.77 \pm 6.63$ \\
-			& 1 Weight & $103093.24 \pm 3.53$ & $23.81 \pm 945.56$ & $15.69 \pm 0.08$ & $120.07 \pm 0.51$ & $-15.62 \pm 4.69$ \\
-			& 2 Weight & $104000.11 \pm 21.84$ & $1201.48 \pm 2621.70$ & $17.28 \pm 1.22$ & $80.95 \pm 0.35$ & $-31.05 \pm 8.21$ \\
-			& 3 Weight & $104882.66 \pm 36.64$ & $349.51 \pm 7984.72$ & $14.13 \pm 0.50$ & $77.39 \pm 0.91$ & $-15.90 \pm 11.16$ \\
-			CO$_2$ & Empty & $102304.81 \pm 15.52$ & $882.70 \pm 1867.09$ & $32.71 \pm 5.98$ & $178.53 \pm 1.66$ & $-22.61 \pm 15.44$ \\
-			& 1 Weight & $102216.12 \pm 3.98$ & $890.54 \pm 3907.62$ & $14.78 \pm 3.93$ & $106.12 \pm 2.15$ & $-22.41 \pm 23.91$ \\
-			& 2 Weight & $103976.97 \pm 3.03$ & $-1087.62 \pm 2016.17$ & $9.09 \pm 1.17$ & $83.14 \pm 0.42$ & $-25.64 \pm 13.47$ \\
-			& 3 Weight & $104000.26 \pm 14.20$ & $-6199.73 \pm 518.83$ & $6.59 \pm 1.27$ & $68.67 \pm 0.14$ & $-13.64 \pm 11.07$ \\
+			2 & 0.09 & 0.11 \\
+			4 & 0.12 & 0.13 \\
+			6 & 0.50 & 0.44 \\
+			8 & 0.68 & 0.65 \\
 			\bottomrule
 		\end{tabular}
-	\end{table*}
+	\end{table}
+		
+	\begin{table}[htbp]
+		\centering
+		\caption{Theoretical vs. Experimental Mole Fractions at Reflux 5}
+		\label{tab:reflux5}
+		\begin{tabular}{ccc}
+			\toprule
+			\textbf{Tray} & \textbf{Theoretical} & \textbf{Experimental} \\
+			\midrule
+			2 & 0.08 & 0.09 \\
+			4 & 0.12 & 0.12 \\
+			6 & 0.50 & 0.45 \\
+			8 & 0.75 & 0.66 \\
+			\bottomrule
+		\end{tabular}
+	\end{table}
+		
+	
+	
+	
 	
 	
 	\begin{figure*}[!t]

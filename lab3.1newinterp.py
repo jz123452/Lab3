@@ -208,7 +208,7 @@ for i in range(len(traytrueproofs)):
     traymolefrs.append(molefractions(traytrueproofs[i]))
     r4traymolefrs.append(molefractions(r4traytrueproofs[i]))
     
-######### EQUATION 2
+
 ### 3.1 Data
 
 
@@ -259,6 +259,9 @@ m_f = [59.00,
 59.00
 ]
 pycnodens = []
+
+
+######### EQUATION 2
 def pycnopf(temp,m_e,m_w,m_f):
     d_w = get_water_density(temp)
     ### INPUTS, 
@@ -270,6 +273,8 @@ def pycnopf(temp,m_e,m_w,m_f):
     return d_f
 for i in range(len(m_f)):
     pycnodens.append(pycnopf(pycnotemps[i],m_e,m_w,m_f[i]))
+#####Densitometer data 
+
 ### error propogation
 import numpy as np
 
