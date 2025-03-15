@@ -178,7 +178,7 @@
 		\label{deqn_ex5.5}
 		m_{Ethanol}= \rho_{ethanol}V_{product}ABV
 	\end{equation}
-	The energy cost per kilogram can then be computed
+	The energy cost per kilogram can then be computed by dividing the total cost of the distillation by the mass of ethanol produced during the distillation in kilograms
 	
 	\section{Experimental Methods}
 	\subsection{Pycnometry}
@@ -197,21 +197,107 @@
 	The distillation system used in this lab was the Armfield UOP3. Figure 1 is a schematic for the experimental setup. The reboiler power was set to 0.75kW, and the feed pump dial read '5.2', which can be corrected to a mL/s flowrate through a calibration equation. The column was initially ran in open reflux to reach operating temperature quickly without producing waste. Then, the reflux ratio was swapped to 4 (product flows to the top product receiver for 7 seconds, and back to the column for 28 seconds).  Waste and product was then drained from the top and bottom receivers in three, 1 minute trials. Three measurements were taken of the waste and product density with a densitometer, and weighed on an analytical balance. The weights of  waste and product streams were used to determine steady-state operation through mass balance closure. At steady state, samples were drawn from plates 2,4,6 and 8, and the densities were measured three times. At steady state, the condenser voltage draw was noted to be 117.9V.
 	This procedure was repeated the following week at a reflux ratio of 5 (product flows to the top product receiver for 7 seconds, and back to the column for 35 seconds) At steady state, the condenser voltage draw was noted to be 118.5V.
 	\section{Results}
-	
+	\subsubsection{Pycnometry and Theoretical Conversions from Density}
+
 	
 	\begin{figure}[!t]
 		\centering
 		\includegraphics[width=3.6in]{fig1}
-		\caption{Measured voltage readings from a PendoTec single-use pressure sensor recorded at various static pressures from a gas piston apparatus containing air. Static pressures were induced by adding weights of [84.248 $\pm$ 0.007g; 164.817 $\pm$ 0.007g; 239.434 $\pm$ 0.002g; 328.00 $\pm$ 0.01g and 402.531 $\pm$ 0.003g.] to the apparatus and appear in the figure from left to right. Error bars were calculated based on a 95\% confidence interval of recorded voltage readings in mV across three trials for each pressure (N=2). Uncertainty }
+		\caption{ Mole fractions of theoretical ethanol-water mixtures ranging from pure ethanol to pure water calculated from interpolation of TTB alcohol proofing tables at various industry-standard temperature values. }
 		\label{fig_1}
 	\end{figure}
+	% Reflux 4
 	\begin{figure}[!t]
 		\centering
 		\includegraphics[width=3.6in]{fig2}
-		\caption{Measured voltage readings from a PendoTec single-use pressure sensor recorded at various static pressures from a gas piston apparatus containing air. Static pressures were induced by adding weights of [84.248 $\pm$ 0.007g; 164.817 $\pm$ 0.007g; 239.434 $\pm$ 0.002g; 328.00 $\pm$ 0.01g and 402.531 $\pm$ 0.003g.] to the apparatus and appear in the figure from left to right. Error bars were calculated based on a 95\% confidence interval of recorded voltage readings in mV across three trials for each pressure (N=2). Uncertainty }
+		\caption{{ True proofs of theoretical ethanol-water mixtures ranging from pure ethanol to pure water calculated from interpolation of TTB alcohol proofing tables at various industry-standard temperature values. } }
 		\label{fig_2}
 	\end{figure}
-	% Reflux 4
+	\begin{table}[htbp]
+		\centering
+		\caption{Comparison of pycnometer densities corrected to 60\degree F with theoretical densities}
+		\label{tab:density_results}
+		\small
+		\begin{tabular}{@{}c S[table-format=1.4]@{\,±\,}S[table-format=1.4] S[table-format=1.4] S[table-format=+1.2]@{}}
+			\toprule
+			\textbf{Sample} & \multicolumn{2}{c}{\textbf{Theoretical (g/mL)}} & \textbf{Experimental (g/mL)} & \textbf{\% Dev.} \\
+			\midrule
+			1  & 0.9270 & 0.0001 & 0.9277 & +0.08 \\
+			2  & 0.8540 & 0.0001 & 0.8534 & -0.07 \\
+			3  & 0.9322 & 0.0001 & 0.9319 & -0.03 \\
+			4  & 0.9623 & 0.0001 & 0.9625 & +0.02 \\
+			5  & 0.9713 & 0.0001 & 0.9716 & +0.03 \\
+			6  & 0.8269 & 0.0001 & 0.8274 & +0.06 \\
+			7  & 0.8718 & 0.0001 & 0.8716 & -0.02 \\
+			8  & 0.9007 & 0.0001 & 0.9009 & +0.02 \\
+			9  & 0.7937 & 0.0001 & 0.7842 & -1.20 \\
+			10 & 0.9282 & 0.0001 & 0.9280 & -0.02 \\
+			\bottomrule
+		\end{tabular}
+		
+	\end{table}
+	
+	
+	
+	\begin{figure}[!t]
+		\centering
+		\includegraphics[width=3.6in]{fig3}
+		\caption{Experimental ethanol-water mixture densities computed through pycnometry plotted against densitometer readings. Error bars for the y-axis, or pycnometer-derived densities, were derived from equation 6. Error bars for the x-axis were computed based on a 95\% confidence interval (N=3) }
+		\label{fig_2}
+	\end{figure}
+	\subsubsection{Continuous Distillation}
+	At steady state for reflux 4, the tray temperatures for Trays 2,4,6 and 8 were 79.0$\pm$0.1$\degree C$,80.1$\pm$0.2$\degree C$,86.0$\pm$0.2$\degree C$,	and 87.1$\pm$0.2$\degree C$, respectively.
+	At steady state for reflux 5, the tray temperatures for Trays 1-8 were 78.7$\pm$0.1$\degree C$,80.1$\pm$0.3$\degree C$,86.0$\pm$0.4$\degree C$,	and 87.8$\pm$0.5$\degree C$, respectively. 
+		\begin{table}[htbp]
+			\centering
+			\footnotesize
+			\caption{Mass Balance Results at Different Reflux Ratios}
+			\label{tab:mass_balance}
+			\sisetup{
+				separate-uncertainty,
+				table-number-alignment = center,
+				table-figures-uncertainty = 2,
+				table-format = -1.2
+			}
+			\begin{tabular}{@{} l 
+					S[table-format=3.2(1)]  % Mass In
+					S[table-format=3.1(3)]  % Mass Out (fixed uncertainty width)
+					S[table-format=-1.2]    % Deviation
+					@{}}
+				\toprule
+				\textbf{Reflux} & 
+				\textbf{Mass In} & 
+				\textbf{Mass Out} & 
+				\textbf{\% Dev.} \\
+				& \textbf{(g/min)} & \textbf{(g/min)} & \\
+				\midrule
+				Reflux 5:1 & 53.90 \pm 0.10  & 59.0 \pm 12.3  & -9.32 \\
+				Reflux 4:1 & 56.60 \pm 0.05  & 74.2 \pm 120   & -31.01 \\
+				\bottomrule
+			\end{tabular}
+		\end{table}
+		The mass balance for the reflux ratio of 5 closed within 10\%, but the reflux ratio of 4 balance did not. There was high uncertainty associated with the waste stream of this ratio, which affected the mass out uncertainty. 
+		
+		
+	\subsubsection{Economic Analysis}
+	
+	
+		
+	
+	\begin{figure}[!t]
+		\centering
+		\includegraphics[width=3.6in]{reflux4}
+		\caption{McCabe-Thiele diagram of the distillation column ran at a reflux ratio of 4 (28 seconds overhead feed to column, 7 seconds to the top product receiver). The yellow horizontal lines represent theoretical stages, while the yellow vertical lines correspond to the VLE conditions of the theoretical stage.The product mole fraction of ethanol, $X_{p}$, feed mole fraction of ethanol, $X_{f}$, and waste mole fraction of ethanol, $X_{w}$ were 0.67,0.07 and 0.03, respectively The feed pump was operated at a flow rate of 58.1 $\frac{mL}{min}$. The pressure drop across the column was measured as 90.0mm $H_{2}O$ through the manometer. The heater power was 0.75kW, while the condenser operated at 3.0kW.} 
+		\label{fig_2}
+	\end{figure}
+	\begin{figure}[!t]
+		\centering
+		\includegraphics[width=3.6in]{reflux5}
+		\caption{McCabe-Thiele diagram of the distillation column ran at a reflux ratio of 5 (35 seconds overhead feed to column, 7 seconds to the top product receiver). The yellow horizontal lines represent theoretical stages, while the yellow vertical lines correspond to the VLE conditions of the theoretical stage. The product mole fraction of ethanol, $X_{p}$, feed mole fraction of ethanol, $X_{f}$, and waste mole fraction of ethanol, $X_{w}$ were 0.75,0.05 and 0.02, respectively. The feed pump was operated at a flow rate of 58.1 $\frac{mL}{min}$. The pressure drop across the column was measured as 94.5mm $H_{2}O$ through the manometer. The heater power was 0.75kW, while the condenser operated at 2.9kW.} 
+		\label{fig_3}
+	\end{figure}
+	
+	The overall column efficiency in the case of a reflux ratio of 4, as calculated by equation (15) was 0.44. For the reflux ratio of 5, it was calculated to be 0.66. The rectifying and stripping line for the reflux ratio of 4 was slightly steeper than that of reflux ratio 5. In both cases, the tray mole fractions deviated from theoretical values retrieved with theoretical VLE data and steady state tray temperatures. 
 	
 	
 		
@@ -246,27 +332,25 @@
 			\bottomrule
 		\end{tabular}
 	\end{table}
-		
-	
-	
-	
-	
-	
-	\begin{figure*}[!t]
+	\begin{table}[htbp]
 		\centering
-		\subfloat[]{\includegraphics[width=5in]{fig2}%
-			\label{a}}
-		\hfil
-		\caption{Dae. Ad quatur autat ut porepel itemoles dolor autem fuga. Bus quia con nessunti as remo di quatus non perum que nimus. (a) Case I. (b) Case II.}
-		
-	\end{figure*}
+		\caption{Distillation Cost Comparison (\$/kg)}
+		\label{tab:cost_compact}
+		\begin{tabular}{l@{\hspace{4pt}}r@{\hspace{4pt}}r@{\hspace{4pt}}r}
+			\toprule
+			\textbf{Component} & \textbf{Reflux 4} & \textbf{Reflux 5} & \textbf{Commercial} \\
+			\midrule
+			Heater    & 32.40 & 21.59 & --- \\
+			Condenser & 127.96 & 84.85 & --- \\
+			\midrule
+			Total     & 160.36 & 106.45 & 0.23 \\
+			\bottomrule
+		\end{tabular}
+	\end{table}
 	
-	Note that often IEEE papers with multi-part figures do not place the labels within the image itself (using the optional argument to $\backslash${\tt{subfloat}}[]), but instead will
-	reference/describe all of them (a), (b), etc., within the main caption.
-	Be aware that for subfig.sty to generate the (a), (b), etc., subfigure
-	labels, the optional argument to $\backslash${\tt{subfloat}} must be present. If a
-	subcaption is not desired, leave its contents blank,
-	e.g.,$\backslash${\tt{subfloat}}[].
+		
+	
+	
 	
 	
 	
@@ -279,7 +363,6 @@ As a fluid's temperature increases, it's volume increases due to thermal expansi
 	\label{deqn_ex5.5}
 	V_{T} = V_{o}[1+\alpha(T-T{o})]
 \end{equation}
-\subsection
 where $V_{T}$ is the volume of the fluid at temperature T, $V_{o}$ is the volume of the fluid at reference temperature $T_{o}$, and $\alpha$ is the coefficient of thermal expansion of the fluid
 \subsubsection{Effect of temperature on mole fraction in ethanol-water mixtures}
 Temperature has an effect on density so in calculating mole fraction from TTB tables which use specific gravity at a reference temperature, we must ensure we correct to the same reference temperature for accurate calculation. 
@@ -292,11 +375,16 @@ Sudden variations in flowrate can change the composition of the product and wast
 Sudden variations in the reflux ratio will alter product and waste flowrates, altering the mass balance because different amounts of product will be returned to the column while the feed remains constant.
 \subsection{Distillation Column Performance Analysis}
 \subsubsection{McCabe-Thiele Analysis}
-The McCabe-Thiele method of modeling distillation assumes that the distillation column operates at a constant pressure (isobaric), and with constant molal overflow. Constant molal overflow means that the number of moles of mixture vaporizing is equal to the moles of mixture condensing. The theoretical trays are typically significantly higher(as they were in our case) as they assume 100\% tray efficiency, with full seperation according to VLE data, but, in practice, efficiency is less than 100\% due to flooding, entrainment or incomplete mixing.
+The McCabe-Thiele method of modeling distillation assumes that the distillation column operates at a constant pressure (isobaric), and with constant molal overflow. Constant molal overflow means that the number of moles of mixture vaporizing is equal to the moles of mixture condensing. With fluctuations in reboiler power, however, this was likely not the case for our experiment. The theoretical trays are typically significantly higher(as they were in our case) as they assume 100\% tray efficiency, with full seperation according to VLE data, but, in practice, efficiency is less than 100\% due to flooding, entrainment or incomplete mixing.
 \subsubsection{Theoretical and Experimental VLE Data Comparison}
-Differences between Theoretical and Experimental VLE data differ and depend on the model used for the theoretical VLE relationship; the interaction of components in binary mixtures varies widely depending on the substance and there are many equations of state suitable for different types of components. Water and ethanol notoriously form an azeotrope and model results can vary. This could potentially affect the theoretical tray calculation as determined by the McCabe-Thiele diagram.
+Differences between Theoretical and Experimental VLE data differ and depend on the model used for the theoretical VLE relationship; the interaction of components in binary mixtures varies widely depending on the substance and there are many equations of state suitable for different types of components. Water and ethanol notoriously form an azeotrope and model results can vary. This could potentially affect the theoretical tray calculation as determined by the McCabe-Thiele diagram. 
 
 Thermodynamic parameters like activity coefficients, fugacity and equilibrium constants are used to describe the behaviors of mixtures and components in them. Theoretical VLE models like Val-Laar, NRTL, and Wilson use published values from experimental data to model solution behavior.
+\subsection{Improvements to Experiment Design}
+A big concern during the pycnometry experiment was the presence of air bubbles in the solution. After pouring the sample inside, there were often lots of tiny bubbles along the inside surfaces of the flask. This would displace volume that could otherwise be occupied by sample mixture, and could lead to inaccurate densitometer readings if bubbles are drawn into the device. We tried to mediate this by letting samples sit for ~2-3minutes and by tapping the sides of the flask with it uncapped, but some bubbles nonetheless persisted. A potential fix for this would be some form of ultrasonic agitation, to agitate bubbles to the surface of the fluid, or a vacuum apparatus to pull off air bubbles before measurements are taken.
+ 
+
+
 \section{Technical Advances}
 
 

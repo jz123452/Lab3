@@ -126,7 +126,31 @@ def molefractions(CP):
     molefret = molefret = (Avv * 0.79313/46.06844) / ((Avv * 0.79313/46.06844) + (Wvv * 0.99904/18.01528))
     return molefret
 
-
+##3.1 DATA
+dn_dens = [
+0.978333333,  # Index 8 originally
+    0.9743,        # Index 4
+    0.969866667,   # Index 2
+    0.958766667,   # Index 3
+    0.9222,        # Index 0
+    0.904866667,   # Index 7
+    0.874366667,   # Index 6
+    0.8522,        # Index 1
+    0.827233333,   # Index 5
+    0.788066667
+]
+dn_unc = [
+    0.000309826,  # Original index 8
+    0.000405658,   # Index 4
+    0.002031668,   # Index 2
+    0.00433757,    # Index 3
+    0.003351285,   # Index 0
+    0.00223419,    # Index 7
+    0.000309826,   # Index 6
+    0.00140524,    # Index 1
+    0.000309826,   # Index 5
+    0.000234207
+]
 
 #EXPERIMENTAL DATA (3.2)
 etden = np.mean([0.8164,0.8168,0.8151]) #g/cm @ 20c
@@ -336,7 +360,211 @@ dm_w = 1.77 * 10**(-14)
 
 for i in range(len(m_f)):
     densuncs.append(propagate_error(m_f[i],m_e,m_w,dm_f,dm_e,dm_w,pycnotemps[i],tempuncertainties[i]))
+def sort_densities_with_uncertainty(pycnodens, densuncs):
+    """Sort density array in descending order with matching uncertainties.
     
+    Args:
+        pycnodens (list): Array of density values
+        densuncs (list): Array of corresponding uncertainties
+        
+    Returns:
+        tuple: (sorted_densities, sorted_uncertainties)
+    """
+    # Pair and sort by density descending
+    paired = sorted(zip(pycnodens, densuncs), key=lambda x: -x[0])
+    
+    # Unzip the sorted pairs
+    sorted_densities, sorted_uncertainties = zip(*paired)
+    
+    return list(sorted_densities), list(sorted_uncertainties)
+sorted_dens, sorted_unc = sort_densities_with_uncertainty(pycnodens, densuncs)
+# 1. Temperature Correction Alignment
+# Convert pycnometer measurements to 60°F basis
+corrected_pycnodens = [correctsg(d, t) for d, t in zip(pycnodens, pycnotemps)]
+
+# 2. Theoretical Reference Extraction
+# Get theoretical densities from TTB Table 6 (already at 60°F)
+theoretical_densities = table6[:,3]  # Column 3 contains S.G. values
+theoretical_proofs = table6[:,0]     # Column 0 contains proof values
+
+# 3. Interpolation Comparison
+differences = []
+for exp_density in corrected_pycnodens:
+    # Find nearest theoretical density
+    idx = np.abs(theoretical_densities - exp_density).argmin()
+    theo_density = theoretical_densities[idx]
+    
+    # Calculate percentage difference
+    diff = ((exp_density - theo_density)/theo_density) * 100
+    differences.append(diff)
+print("Density Comparison (60°F Standard)")
+print("----------------------------------")
+for i, exp_dens in enumerate(corrected_pycnodens):
+    # Find closest theoretical value
+    idx = np.abs(theoretical_densities - exp_dens).argmin()
+    theo_dens = theoretical_densities[idx]
+    
+    # Calculate percentage difference
+    pct_diff = ((exp_dens - theo_dens)/theo_dens) * 100
+    
+    print(f"Sample {i+1}:")
+    print(f"  Theoretical: {theo_dens:.5f} g/mL")
+    print(f"  Experimental: {exp_dens:.5f} g/mL")
+    print(f"  Difference: {pct_diff:+.2f}%\n")
+# 4. Statistical Analysis
+avg_diff = np.mean(differences)
+std_diff = np.std(differences)
+max_diff = np.max(np.abs(differences))
+
+
+print(f"""
+Comparison Results (N={len(corrected_pycnodens)}):
+- Average deviation: {avg_diff:.2f}%
+- Standard deviation: {std_diff:.2f}%
+- Maximum discrepancy: {max_diff:.2f}%
+""")
+##############Mass balance closure
+def mass_balance_error(feed_flowrate_ml_min, feed_density,
+                      product_flowrate_ml_min, product_density,
+                      waste_flowrate_ml_min, waste_density):
+    """
+    Calculate steady-state mass balance error with detailed output.
+    
+    Parameters:
+    feed_flowrate_ml_min (mL/min) : Feed flow rate
+    feed_density (g/mL)          : Feed density
+    product_flowrate_ml_min (mL/min): Product flow rate
+    product_density (g/mL)       : Product density
+    waste_flowrate_ml_min (mL/min): Waste flow rate
+    waste_density (g/mL)         : Waste density
+    
+    Returns:
+    tuple: (mass_in, mass_out, error_percent)
+    """
+    # Calculate mass flow rates (g/min)
+    mass_in = feed_flowrate_ml_min * feed_density
+    mass_product = product_flowrate_ml_min * product_density
+    mass_waste = waste_flowrate_ml_min * waste_density
+    mass_out = mass_product + mass_waste
+
+    # Handle division by zero
+    if abs(mass_in) < 1e-9:
+        error_percent = 0.0
+    else:
+        error_percent = ((mass_in - mass_out) / mass_in) * 100
+
+    # Print formatted results
+    print(f"Mass In:    {mass_in:.4f} g/min")
+    print(f"Mass Out:   {mass_out:.4f} g/min")
+    print(f"Deviation:  {error_percent:.4f}%")
+    
+    return (round(mass_in, 4), round(mass_out, 4), round(error_percent, 4))
+
+
+# Example usage:
+
+
+
+# reflux 5:
+error5 = mass_balance_error(
+    feed_flowrate_ml_min=58.1,  # mL/min
+    feed_density=0.92806,
+    product_flowrate_ml_min=(5.62+6.52+7.1)/3,        # mL
+    product_density=0.8161,
+    waste_flowrate_ml_min=(48+58+57)/3,             # mL
+    waste_density=0.98857
+)
+## reflux 4
+error4 = mass_balance_error(
+    feed_flowrate_ml_min=58.1,  # mL/min
+    feed_density=0.9745,
+    product_flowrate_ml_min=(6+9.5+7.5)/3,        # mL
+    product_density=0.8275,
+    waste_flowrate_ml_min=(28+100+7.4+30+41)/3,             # mL
+    waste_density=0.9859
+)
+
+
+print(f"Mass balance error: {error5}%")
+
+
+
+import math
+
+def mass_balance_uncertainty(feed_flow, feed_flow_unc, feed_rho, feed_rho_unc,
+                            prod_flow, prod_flow_unc, prod_rho, prod_rho_unc,
+                            waste_flow, waste_flow_unc, waste_rho, waste_rho_unc):
+    """
+    Returns mass balance table data with uncertainties
+    """
+    # Calculate mass terms
+    mass_in = feed_flow * feed_rho
+    mass_prod = prod_flow * prod_rho
+    mass_waste = waste_flow * waste_rho
+    
+    # Calculate uncertainties (excluding feed flowrate uncertainty)
+    u_mass_in = math.sqrt((feed_flow * feed_rho_unc)**2 + (feed_rho * 0)**2)
+    u_mass_prod = math.sqrt((prod_flow * prod_rho_unc)**2 + (prod_rho * prod_flow_unc)**2)
+    u_mass_waste = math.sqrt((waste_flow * waste_rho_unc)**2 + (waste_rho * waste_flow_unc)**2)
+    
+    return {
+        'Mass In': (mass_in, u_mass_in),
+        'Product Out': (mass_prod, u_mass_prod),
+        'Waste Out': (mass_waste, u_mass_waste)
+    }
+
+# Example usage:
+
+
+
+
+# Reflux 4 values
+feed_flow_4 = 58.1
+feed_rho_4 = 0.9745
+prod_flow_4 = (6 + 9.5 + 7.5) / 3
+prod_rho_4 = 0.8275
+waste_flow_4 = (28 + 100 + 7.4 + 30 + 41) / 3
+waste_rho_4 = 0.9859
+
+# Reflux 5 values
+feed_flow_5 = 58.1
+feed_rho_5 = 0.92806
+prod_flow_5 = (5.62 + 6.52 + 7.1) / 3
+prod_rho_5 = 0.8161
+waste_flow_5 = (48 + 58 + 57) / 3
+waste_rho_5 = 0.98857
+
+# Uncertainties (example values, adjust as needed)
+feed_flow_unc4 = 0
+feed_rho_unc4 = 0.0008
+prod_flow_unc4 = 3.56
+prod_rho_unc4 = 0.0033
+waste_flow_unc4 = 118
+waste_rho_unc4 = 0.002
+feed_flow_unc5 = 0
+feed_rho_unc5 = 0.002
+prod_flow_unc5 = 1.51
+prod_rho_unc5 = 0.005
+waste_flow_unc5 = 11.2
+waste_rho_unc5 = 0.001
+
+# Calculate errors and uncertainties
+uncertainty_4 = mass_balance_uncertainty(
+    feed_flow_4, feed_flow_unc4, feed_rho_4, feed_rho_unc4,
+    prod_flow_4, prod_flow_unc4, prod_rho_4, prod_rho_unc4,
+    waste_flow_4, waste_flow_unc4, waste_rho_4, waste_rho_unc4
+)
+
+uncertainty_5 = mass_balance_uncertainty(
+    feed_flow_5, feed_flow_unc5, feed_rho_5, feed_rho_unc5,
+    prod_flow_5, prod_flow_unc5, prod_rho_5, prod_rho_unc5,
+    waste_flow_5, waste_flow_unc5, waste_rho_5, waste_rho_unc5
+)
+
+# Output results
+print(f"{uncertainty_4}reflux4")
+print(f"{uncertainty_5}reflux5")
+
 plt.figure('1')
 plt.plot(densities60,molefrs60,'o', markersize=2,label='60°F')
 plt.plot(densities25,molefrs25,'o', markersize=2,label='25°C')
@@ -352,4 +580,8 @@ plt.plot(densities20,trueproofs20,'o', markersize=2,label='20°C')
 plt.plot(densities60,trueproofs60,'o', markersize=2,label='60°F')
 plt.plot(densities25,trueproofs25,'o', markersize=2,label='25°C')
 plt.legend()
+plt.figure('3')
+plt.errorbar(dn_dens, sorted_dens, dn_unc, sorted_unc, fmt = 'ro', marker='o', markersize=2,capsize=3)
+plt.xlabel('Densitometer Density (g/mL)')
+plt.ylabel('Computed Pycnometer Density (g/mL)')
 plt.grid(True)
