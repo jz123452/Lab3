@@ -198,7 +198,7 @@
 	This procedure was repeated the following week at a reflux ratio of 5 (product flows to the top product receiver for 7 seconds, and back to the column for 35 seconds) At steady state, the condenser voltage draw was noted to be 118.5V.
 	\section{Results}
 	\subsubsection{Pycnometry and Theoretical Conversions from Density}
-
+	The densities of the densitometer were consistently greater than the computed pycnometer densities, as shown by figure 4. There is significantly greater error associated with the pycnometer densities than the densitometer densities.
 	
 	\begin{figure}[!t]
 		\centering
@@ -279,7 +279,8 @@
 		The mass balance for the reflux ratio of 5 closed within 10\%, but the reflux ratio of 4 balance did not. There was high uncertainty associated with the waste stream of this ratio, which affected the mass out uncertainty. 
 		
 		
-	\subsubsection{Economic Analysis}
+
+	
 	
 	
 		
@@ -381,9 +382,14 @@ Differences between Theoretical and Experimental VLE data differ and depend on t
 
 Thermodynamic parameters like activity coefficients, fugacity and equilibrium constants are used to describe the behaviors of mixtures and components in them. Theoretical VLE models like Val-Laar, NRTL, and Wilson use published values from experimental data to model solution behavior.
 \subsection{Improvements to Experiment Design}
+\subsubsection{Pycnometry}
 A big concern during the pycnometry experiment was the presence of air bubbles in the solution. After pouring the sample inside, there were often lots of tiny bubbles along the inside surfaces of the flask. This would displace volume that could otherwise be occupied by sample mixture, and could lead to inaccurate densitometer readings if bubbles are drawn into the device. We tried to mediate this by letting samples sit for ~2-3minutes and by tapping the sides of the flask with it uncapped, but some bubbles nonetheless persisted. A potential fix for this would be some form of ultrasonic agitation, to agitate bubbles to the surface of the fluid, or a vacuum apparatus to pull off air bubbles before measurements are taken.
- 
-
+\subsubsection{Continuous Distillation}
+In our McCabe-Thiele diagrams, we make an assumption that the feed stream is entirely saturated vapor. The stripping line was graphically fitted between the intersection of the x-y line and the intersection of the q and rectifying line, so by relaxing this assumption and accounting for feed quality, the stripping line will be altered. If the feed is cold, for instance, the slope of the q line will be greater than 1, and the distillation will have more stripping sections due to the rectifying line and q line occurring further downfield. A way to monitor feed quality , such as a temperature and pressure sensor paired with VLE data in the feed to the column, could be used to more accurately determine feed quality. With a better estimate for q, one can choose an optimal entrance stage for the feed based on the new McCabe-Thiele modeling. 
+One may consider swapping the trays for a packing material, like Dupont Hypak, which typically have lower height-equivalent to theoretical plate (HETP)  values than trays. This will decrease the length of the column, decreasing the pressure drop, reducing energy needs.
+As the economic efficiency of the higher reflux ratio in terms of cost per kg of ethanol produced was better than that of the lower reflux ratio, it would be worthwhile to run further experiments at higher reflux ratios until the energy costs become too significant, optimizing for a maximum cost per kilogram.
+\subsubsection{VLE}
+The relationship between experimental and theoretical VLE behavior can be refined by 
 
 \section{Technical Advances}
 
